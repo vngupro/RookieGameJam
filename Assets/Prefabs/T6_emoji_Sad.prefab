@@ -11,18 +11,18 @@ PrefabInstance:
       propertyPath: emojiType
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8301695065577990274, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
-      propertyPath: m_Color.r
-      value: 0
+    - target: {fileID: 5166868056672260826, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 8.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166868056672260826, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 8.34
       objectReference: {fileID: 0}
     - target: {fileID: 8301695065577990274, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
-      propertyPath: m_Color.g
-      value: 0.3882353
-      objectReference: {fileID: 0}
-    - target: {fileID: 8301695065577990274, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1884c59c98466c94db65d24b4c3cafd3, type: 3}
     - target: {fileID: 8301695065577990275, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
       propertyPath: m_Name
       value: T6_emoji_Sad

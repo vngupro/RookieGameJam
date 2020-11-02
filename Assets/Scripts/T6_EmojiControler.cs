@@ -6,6 +6,7 @@ public class T6_EmojiControler : MonoBehaviour
 {
     private Transform emojiTransform = null;
     public float speed = 2f;
+    public ParticleSystem particles;
 
     private void Start()
     {
@@ -21,8 +22,12 @@ public class T6_EmojiControler : MonoBehaviour
     {
         if (collision.CompareTag("T6_EndLine"))
         {
-            //defait ------- perdre un point de vie
-            Destroy(this.gameObject);
+            //defait -------------------- perdre un point de vie
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            Instantiate(particles, this.gameObject.transform);
+            speed = 0;
+            this.GetComponent<Collider2D>().enabled = false;
+            Destroy(this.gameObject, .5f);
         }
     }
 }

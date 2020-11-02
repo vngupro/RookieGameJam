@@ -8,6 +8,7 @@ public class T6_EmojiInteractions : MonoBehaviour
 {
     public EmojiType emojiType;
     public bool isBeingShot = false;
+    public ParticleSystem particles;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -24,7 +25,8 @@ public class T6_EmojiInteractions : MonoBehaviour
                             break;
                         case EmojiType.ANGRY:
                             Destroy(collision.gameObject);
-                            Destroy(this.gameObject);
+                            Destroy(this.gameObject, .5f);
+                            SpawnParticles();
                             break;
                     }
                     break;
@@ -34,7 +36,8 @@ public class T6_EmojiInteractions : MonoBehaviour
                     {
                         case EmojiType.HAPPY:
                             Destroy(collision.gameObject);
-                            Destroy(this.gameObject);
+                            Destroy(this.gameObject, .5f);
+                            SpawnParticles();
                             break;
                         case EmojiType.SAD:
                             break;
@@ -50,7 +53,8 @@ public class T6_EmojiInteractions : MonoBehaviour
                             break;
                         case EmojiType.SAD:
                             Destroy(collision.gameObject);
-                            Destroy(this.gameObject);
+                            Destroy(this.gameObject, .5f);
+                            SpawnParticles();
                             break;
                         case EmojiType.ANGRY:
                             break;
@@ -58,5 +62,13 @@ public class T6_EmojiInteractions : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private void SpawnParticles()
+    {
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        Instantiate(particles, this.gameObject.transform);
+        this.GetComponent<T6_EmojiControler>().speed = 0;
+        this.GetComponent<Collider2D>().enabled = false;
     }
 }
