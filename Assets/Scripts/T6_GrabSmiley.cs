@@ -34,12 +34,12 @@ public class T6_GrabSmiley : MonoBehaviour
                 rb2D.velocity = new Vector2(-returnGrabSpeed, 0); // retour du grapin
                 if(smileyGrabbed.gameObject != null)
                 {
-                    smileyGrabbed.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+                    smileyGrabbed.gameObject.GetComponent<Collider2D>().enabled = false;
                 }
             }
             else
             {
-                smileyGrabbed.gameObject.GetComponent<CircleCollider2D>().enabled = true;
+                smileyGrabbed.gameObject.GetComponent<Collider2D>().enabled = true;
                 rb2D.velocity = new Vector2(0, 0);
                 canThrow = true;
             }
