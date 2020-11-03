@@ -1,21 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using UnityEngine;
 
 public class T6_EmojiSpawner : MonoBehaviour
 {
+    public static T6_EmojiSpawner instance = null;
+
     [SerializeField] private GameObject happyEmoji;
     [SerializeField] private GameObject sadEmoji;
     [SerializeField] private GameObject angryEmoji;
     [SerializeField] private GameObject[] lines;
-    [SerializeField] float scoreToAttain = 10.0f;
+
     [SerializeField] List<T6_WaveConfig> WaveList = new List<T6_WaveConfig>();
+    private List<T6_EmojiClass> EmojiList = new List<T6_EmojiClass>();
+    private List<bool> LineList = new List<bool>();
+    private float scoreToAttainForNextWave;
+    private float timeBeforeNextWave;
+    private float waveDuration;
+    private int happyEmojiLimit;
+    private int sadEmojiLimit;
+    private int angryEmojiLimit;
+
     private int currentWave = 0;
 
-    private float timer = 3;
+    [SerializeField] float timeBetweenEmojiSpawn = 1.0f;
+    private float timer = 1.0f;
     private bool isSpawning = false;
 
     GameObject obj;
+    private int emoji = 0;
+    private int line = 0;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }else if(instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        GetWaveParameters();
+       
+    }
 
     private void Update()
     {
@@ -25,27 +54,54 @@ public class T6_EmojiSpawner : MonoBehaviour
             isSpawning = true;
             SpawnEmoji();
         }
+
+        waveDuration -= Time.deltaTime;
+        if( (waveDuration <= 0 || (angryEmojiLimit == 0 && sadEmojiLimit == 0 && happyEmojiLimit == 0)) && currentWave < WaveList.Count - 1)
+        {
+            GetNextWave();
+        }
+
+        if(currentWave >= WaveList.Count - 1)
+        {
+            Debug.Log("Game OVER");
+        }
+       
     }
 
 
     private void SpawnEmoji()
     {
-        int emoji = Random.Range(0, 3);
-        int line = Random.Range(0, 5);
+        emoji = Random.Range(0, EmojiList.Count);
+        do
+        {
+            line = Random.Range(0, 5);
+        } while (!LineList[line]);
 
         switch (emoji)
         {
             case 0:
-                obj = Instantiate(happyEmoji, lines[line].transform);
+                if(happyEmojiLimit > 0)
+                {
+                    obj = Instantiate(happyEmoji, lines[line].transform);
+                    happyEmojiLimit--;
+                }
                 break;
             case 1:
-                obj = Instantiate(sadEmoji, lines[line].transform);
+                if (sadEmojiLimit > 0)
+                {
+                    obj = Instantiate(sadEmoji, lines[line].transform);
+                    sadEmojiLimit--;
+                }
                 break;
             case 2:
-                obj = Instantiate(angryEmoji, lines[line].transform);
+                if (angryEmojiLimit > 0)
+                {
+                    obj = Instantiate(angryEmoji, lines[line].transform);
+                    angryEmojiLimit--;
+                }
                 break;
         }
-        timer = 3;
+        timer = timeBetweenEmojiSpawn;
         isSpawning = false;
     }
 
@@ -53,5 +109,38 @@ public class T6_EmojiSpawner : MonoBehaviour
     {
         return WaveList[currentWave];
     }
+    public void GetWaveParameters()
+    {
+        scoreToAttainForNextWave = WaveList[currentWave].GetScoreToAttainForNextWave();
+        timeBeforeNextWave = WaveList[currentWave].GetTimeBeforeNextWave();
+        waveDuration = WaveList[currentWave].GetWaveDuration();
+        EmojiList = WaveList[currentWave].GetEmojiList();
+        LineList = WaveList[currentWave].GetLineList();
 
+        for (int i = 0; i < EmojiList.Count; i++)
+        {
+            if (EmojiList[i].type == happyEmoji.GetComponent<T6_EmojiInteractions>().emojiType)
+            {
+                happyEmojiLimit = EmojiList[i].limitNumber;
+            }
+            else if (EmojiList[i].type == sadEmoji.GetComponent<T6_EmojiInteractions>().emojiType)
+            {
+                sadEmojiLimit = EmojiList[i].limitNumber;
+            }
+            else if (EmojiList[i].type == angryEmoji.GetComponent<T6_EmojiInteractions>().emojiType)
+            {
+                angryEmojiLimit = EmojiList[i].limitNumber;
+            }
+        }
+    }
+    public void GetNextWave()
+    {
+        Debug.Log("Start Next Wave");
+        while (timeBeforeNextWave > 0)
+        {
+            timeBeforeNextWave -= Time.deltaTime;
+        }
+        currentWave++;
+        GetWaveParameters();
+    }
 }

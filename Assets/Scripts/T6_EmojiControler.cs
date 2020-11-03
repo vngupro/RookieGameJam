@@ -13,6 +13,7 @@ public class T6_EmojiControler : MonoBehaviour
     private float maxSpeed;
     private float globalSpeed;
     private float randomSpeed;
+
     EmojiType type;
     List<T6_EmojiClass> emojiList;
 
@@ -20,6 +21,7 @@ public class T6_EmojiControler : MonoBehaviour
     {
         type = GetComponent<T6_EmojiInteractions>().emojiType;
         emojiList = emojiSpawner.GetComponent<T6_EmojiSpawner>().GetWave().GetEmojiList();
+
         for (int i = 0; i < emojiList.Count; i++)
         {
             if (emojiList[i].type == type)
@@ -35,7 +37,7 @@ public class T6_EmojiControler : MonoBehaviour
         //speed = Random.Range(1.5f , 2.5f) * Time.deltaTime;
         randomSpeed = Random.Range(minSpeed, maxSpeed) * globalSpeed * Time.deltaTime;
 
-        Debug.Log(randomSpeed);
+        //Debug.Log(randomSpeed);
 
     }
 

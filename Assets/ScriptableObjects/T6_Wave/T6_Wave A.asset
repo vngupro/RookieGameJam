@@ -21,17 +21,18 @@ MonoBehaviour:
   line5: 1
   emojiList:
   - type: 0
-    number: 3
+    limitNumber: 10
     minSpeed: 0.5
     maxSpeed: 2.5
   - type: 1
-    number: 3
+    limitNumber: 5
     minSpeed: 0.5
     maxSpeed: 2.5
   - type: 2
-    number: 3
+    limitNumber: 1
     minSpeed: 0.5
     maxSpeed: 2.5
+  scoreToAttainForNextWave: 10
   timeBeforeNextWave: 2
-  waveTime: 10
+  waveDuration: 10
   globalSpeed: 3

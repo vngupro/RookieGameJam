@@ -6,7 +6,7 @@ using UnityEngine;
 public class T6_EmojiClass
 {
     public EmojiType type;
-    public int number;
+    public int limitNumber;
     public float minSpeed;
     public float maxSpeed;
 
