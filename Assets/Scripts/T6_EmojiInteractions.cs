@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public enum EmojiType { HAPPY , SAD , ANGRY }
 
@@ -27,6 +28,7 @@ public class T6_EmojiInteractions : MonoBehaviour
                             Destroy(collision.gameObject);
                             Destroy(this.gameObject, .5f);
                             SpawnParticles();
+                            
                             break;
                     }
                     break;
@@ -71,4 +73,5 @@ public class T6_EmojiInteractions : MonoBehaviour
         //this.GetComponent<T6_EmojiControler>().speed = 0;
         this.GetComponent<Collider2D>().enabled = false;
     }
+
 }
