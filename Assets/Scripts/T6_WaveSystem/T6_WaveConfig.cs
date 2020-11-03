@@ -48,7 +48,7 @@ public class T6_WaveConfig : ScriptableObject
     [SerializeField] float scoreForNextWave = 10.0f;
     [SerializeField] float timeBeforeNextWave = 2.0f;
     //[SerializeField] bool ActivateWaveDuration = true;
-    [SerializeField] float waveDuration = 10.0f;
+    [SerializeField] float waveDuration = 1000.0f;
     [SerializeField] float globalSpeed = 1.0f;
 
     public List<bool> GetLineList() {
