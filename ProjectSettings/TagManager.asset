@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - emoji
+  - T6_Emoji
+  - T6_EndLine
   layers:
   - Default
   - TransparentFX

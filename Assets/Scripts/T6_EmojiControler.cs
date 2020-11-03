@@ -5,12 +5,13 @@ using UnityEngine;
 public class T6_EmojiControler : MonoBehaviour
 {
     private Transform emojiTransform = null;
-    public float speed = 5f;
+    public float speed = 2f;
+    public ParticleSystem particles;
 
     private void Start()
     {
         emojiTransform = GetComponent<Transform>();
-        speed = Random.Range(2 , 3.5f) * Time.deltaTime;
+        speed = Random.Range(1.5f , 2.5f) * Time.deltaTime;
     }
     private void Update()
     {
@@ -19,7 +20,14 @@ public class T6_EmojiControler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //perdre un point de vie
-        Destroy(this.gameObject);
+        if (collision.CompareTag("T6_EndLine"))
+        {
+            //defait -------------------- perdre un point de vie
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            Instantiate(particles, this.gameObject.transform);
+            speed = 0;
+            this.GetComponent<Collider2D>().enabled = false;
+            Destroy(this.gameObject, .5f);
+        }
     }
 }
