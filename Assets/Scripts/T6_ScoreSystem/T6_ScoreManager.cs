@@ -20,9 +20,14 @@ public class T6_ScoreManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        T6_ScoreEvent.hitWeakEmoji.AddListener(HitWeakEmoji);
     }
-    private void Update()
+
+
+    public void HitWeakEmoji(HitScoreEventData data)
     {
+        Debug.Log("Good Hit !!! Score++");
         score++;
         text.text = score.ToString();
     }

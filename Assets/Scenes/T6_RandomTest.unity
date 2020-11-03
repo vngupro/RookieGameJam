@@ -423,7 +423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &525899185
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1745,7 +1745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ebed070da15042478a86f94f6047255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLife: 5
+  maxLife: 100
   lifePrefab: {fileID: 2113781901173079841, guid: 645392f582c65324d9f23ce6f6c9780c, type: 3}
   canvas: {fileID: 1915653398}
   gameOverScreen: {fileID: 1589526037}

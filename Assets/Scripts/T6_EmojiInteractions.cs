@@ -10,7 +10,7 @@ public class T6_EmojiInteractions : MonoBehaviour
     public EmojiType emojiType;
     public bool isBeingShot = false;
     public ParticleSystem particles;
-
+    public float point = 1.0f;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("T6_Emoji") && isBeingShot)
@@ -32,7 +32,7 @@ public class T6_EmojiInteractions : MonoBehaviour
                             Destroy(collision.gameObject);
                             Destroy(this.gameObject, .5f);
                             SpawnParticles();
-                            
+                            T6_ScoreEvent.hitWeakEmoji.Invoke(new HitScoreEventData(collision.gameObject, gameObject, point));
                             break;
                     }
                     break;
