@@ -21,8 +21,12 @@ public class T6_EmojiInteractions : MonoBehaviour
                     switch (collision.gameObject.GetComponent<T6_EmojiInteractions>().emojiType)
                     {
                         case EmojiType.HAPPY:
+                            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                             break;
                         case EmojiType.SAD:
+                            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                             break;
                         case EmojiType.ANGRY:
                             Destroy(collision.gameObject);
@@ -42,8 +46,12 @@ public class T6_EmojiInteractions : MonoBehaviour
                             SpawnParticles();
                             break;
                         case EmojiType.SAD:
+                            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                             break;
                         case EmojiType.ANGRY:
+                            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                             break;
                     }
                     break;
@@ -52,6 +60,8 @@ public class T6_EmojiInteractions : MonoBehaviour
                     switch (collision.gameObject.GetComponent<T6_EmojiInteractions>().emojiType)
                     {
                         case EmojiType.HAPPY:
+                            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                             break;
                         case EmojiType.SAD:
                             Destroy(collision.gameObject);
@@ -59,10 +69,13 @@ public class T6_EmojiInteractions : MonoBehaviour
                             SpawnParticles();
                             break;
                         case EmojiType.ANGRY:
+                            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                             break;
                     }
                     break;
             }
+            isBeingShot = false;
         }
     }
 
