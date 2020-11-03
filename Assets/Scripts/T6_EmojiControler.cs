@@ -22,7 +22,7 @@ public class T6_EmojiControler : MonoBehaviour
     {
         if (collision.CompareTag("T6_EndLine"))
         {
-            //defait -------------------- perdre un point de vie
+            //defaite -------------------- perdre un point de vie
             this.GetComponent<SpriteRenderer>().enabled = false;
             Instantiate(particles, this.gameObject.transform);
             speed = 0;

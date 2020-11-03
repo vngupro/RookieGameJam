@@ -12,10 +12,10 @@ public class HitEvent : UnityEvent<HitEventData> { }
 
 public class HitEventData
 {
-    public Collider emojiHitter;
+    public Collider2D emojiHitter;
     public GameObject wallHit;
 
-    public HitEventData(Collider emojiHitter, GameObject wallHit)
+    public HitEventData(Collider2D emojiHitter, GameObject wallHit)
     {
         this.emojiHitter = emojiHitter;
         this.wallHit = wallHit;
