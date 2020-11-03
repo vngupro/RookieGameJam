@@ -10,6 +10,9 @@ public class T6_ProgresBar : MonoBehaviour
     private float maxTimer;
     private bool timerIsUpdating = false;
     public float updateTime = .5f;
+    public Image fillImage;
+    [SerializeField] private Color orange;
+    [SerializeField] private Color red;
 
     private void Start()
     {
@@ -26,6 +29,13 @@ public class T6_ProgresBar : MonoBehaviour
             Debug.Log(timer);
             timerIsUpdating = true;
             StartCoroutine(UpdateTimerAfterSec());
+        }
+        if (slider.value < .4 && slider.value > .2)
+        {
+            fillImage.color = orange;
+        }else if (slider.value < .2)
+        {
+            fillImage.color = red;
         }
     }
 

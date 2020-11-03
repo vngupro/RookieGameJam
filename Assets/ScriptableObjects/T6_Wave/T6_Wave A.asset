@@ -34,5 +34,5 @@ MonoBehaviour:
     maxSpeed: 2.5
   scoreForNextWave: 10
   timeBeforeNextWave: 2
-  waveDuration: 100
+  waveDuration: 1000
   globalSpeed: 3
