@@ -12,7 +12,7 @@ public class T6_EmojiControler : MonoBehaviour
     private float minSpeed;
     private float maxSpeed;
     private float globalSpeed;
-    private float randomSpeed;
+    public float randomSpeed;
     EmojiType type;
     List<T6_EmojiClass> emojiList;
 
