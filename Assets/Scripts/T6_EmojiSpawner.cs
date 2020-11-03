@@ -15,7 +15,7 @@ public class T6_EmojiSpawner : MonoBehaviour
     [SerializeField] List<T6_WaveConfig> WaveList = new List<T6_WaveConfig>();
     private List<T6_EmojiClass> EmojiList = new List<T6_EmojiClass>();
     private List<bool> LineList = new List<bool>();
-    private float scoreToAttainForNextWave;
+    private float scoreForNextWave;
     private float timeBeforeNextWave;
     private float waveDuration;
     private int happyEmojiLimit;
@@ -31,6 +31,8 @@ public class T6_EmojiSpawner : MonoBehaviour
     GameObject obj;
     private int emoji = 0;
     private int line = 0;
+
+    [SerializeField] GameObject gameOverScreen;
 
     private void Awake()
     {
@@ -63,7 +65,8 @@ public class T6_EmojiSpawner : MonoBehaviour
 
         if(currentWave >= WaveList.Count - 1)
         {
-            Debug.Log("Game OVER");
+            Debug.Log("Game Over");
+            gameOverScreen.SetActive(true);
         }
        
     }
@@ -111,7 +114,7 @@ public class T6_EmojiSpawner : MonoBehaviour
     }
     public void GetWaveParameters()
     {
-        scoreToAttainForNextWave = WaveList[currentWave].GetScoreToAttainForNextWave();
+        scoreForNextWave = WaveList[currentWave].GetScoreForNextWave();
         timeBeforeNextWave = WaveList[currentWave].GetTimeBeforeNextWave();
         waveDuration = WaveList[currentWave].GetWaveDuration();
         EmojiList = WaveList[currentWave].GetEmojiList();

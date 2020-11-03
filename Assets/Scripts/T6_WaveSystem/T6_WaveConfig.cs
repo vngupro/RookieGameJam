@@ -44,8 +44,10 @@ public class T6_WaveConfig : ScriptableObject
     };
 
     [Header("Wave Parameteters")]
-    [SerializeField] float scoreToAttainForNextWave = 10.0f;
+    //[SerializeField] bool ActivateScoreForNextWave = false;
+    [SerializeField] float scoreForNextWave = 10.0f;
     [SerializeField] float timeBeforeNextWave = 2.0f;
+    //[SerializeField] bool ActivateWaveDuration = true;
     [SerializeField] float waveDuration = 10.0f;
     [SerializeField] float globalSpeed = 1.0f;
 
@@ -59,10 +61,12 @@ public class T6_WaveConfig : ScriptableObject
         return LineList;
     }
     public List<T6_EmojiClass> GetEmojiList() { return emojiList; }
+    //public bool GetActivateWaveDuration() { return ActivateWaveDuration; }
     public float GetWaveDuration() { return waveDuration; }
     public float GetGlobalSpeed() { return globalSpeed; }
+    //public bool GetActivateScoreForNextWave() { return ActivateScoreForNextWave; }
     public float GetTimeBeforeNextWave() { return timeBeforeNextWave; }
-    public float GetScoreToAttainForNextWave() { return scoreToAttainForNextWave; }
+    public float GetScoreForNextWave() { return scoreForNextWave; }
     
 
 
