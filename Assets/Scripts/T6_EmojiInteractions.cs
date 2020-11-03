@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EmojiType { HAPPY , SAD , ANGRY}
+public enum EmojiType { HAPPY , SAD , ANGRY }
 
 public class T6_EmojiInteractions : MonoBehaviour
 {
@@ -68,7 +68,7 @@ public class T6_EmojiInteractions : MonoBehaviour
     {
         this.GetComponent<SpriteRenderer>().enabled = false;
         Instantiate(particles, this.gameObject.transform);
-        this.GetComponent<T6_EmojiControler>().speed = 0;
+        //this.GetComponent<T6_EmojiControler>().speed = 0;
         this.GetComponent<Collider2D>().enabled = false;
     }
 }

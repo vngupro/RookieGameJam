@@ -8,9 +8,14 @@ public class T6_EmojiSpawner : MonoBehaviour
     [SerializeField] private GameObject sadEmoji;
     [SerializeField] private GameObject angryEmoji;
     [SerializeField] private GameObject[] lines;
+    [SerializeField] float scoreToAttain = 10.0f;
+    [SerializeField] List<T6_WaveConfig> WaveList = new List<T6_WaveConfig>();
+    private int currentWave = 0;
 
     private float timer = 3;
     private bool isSpawning = false;
+
+    GameObject obj;
 
     private void Update()
     {
@@ -27,10 +32,11 @@ public class T6_EmojiSpawner : MonoBehaviour
     {
         int emoji = Random.Range(0, 3);
         int line = Random.Range(0, 5);
+
         switch (emoji)
         {
             case 0:
-                GameObject obj = Instantiate(happyEmoji, lines[line].transform);
+                obj = Instantiate(happyEmoji, lines[line].transform);
                 break;
             case 1:
                 obj = Instantiate(sadEmoji, lines[line].transform);
@@ -42,4 +48,10 @@ public class T6_EmojiSpawner : MonoBehaviour
         timer = 3;
         isSpawning = false;
     }
+
+    public T6_WaveConfig GetWave()
+    {
+        return WaveList[currentWave];
+    }
+
 }

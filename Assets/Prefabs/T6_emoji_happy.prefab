@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8301695065577990285}
   - component: {fileID: 8301695065577990274}
-  - component: {fileID: 8301695065577990284}
   - component: {fileID: 5166868056672260826}
   - component: {fileID: -5949155285644934538}
+  - component: {fileID: 8301695065577990284}
   - component: {fileID: 3432451852259687958}
   m_Layer: 0
   m_Name: T6_emoji_happy
@@ -86,20 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8301695065577990284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8301695065577990275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb4a9c11477d34246ace427a4e7b3be2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  particles: {fileID: 4416443951886644732, guid: d3bc86029d6e98e4e93dbc2d9023c214, type: 3}
 --- !u!61 &5166868056672260826
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -147,6 +133,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &8301695065577990284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8301695065577990275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4a9c11477d34246ace427a4e7b3be2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 4416443951886644732, guid: d3bc86029d6e98e4e93dbc2d9023c214, type: 3}
+  emojiSpawner: {fileID: 5955099657712493365, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
 --- !u!114 &3432451852259687958
 MonoBehaviour:
   m_ObjectHideFlags: 0

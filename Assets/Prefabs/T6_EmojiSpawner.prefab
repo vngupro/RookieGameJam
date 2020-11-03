@@ -218,6 +218,11 @@ MonoBehaviour:
   - {fileID: 5955099656611803013}
   - {fileID: 5955099657732232863}
   - {fileID: 5955099657334166935}
+  scoreToAttain: 10
+  WaveList:
+  - {fileID: 11400000, guid: 5eaedddf214a187469eb553ac0ed85cd, type: 2}
+  - {fileID: 11400000, guid: 5eaedddf214a187469eb553ac0ed85cd, type: 2}
+  - {fileID: 11400000, guid: 5eaedddf214a187469eb553ac0ed85cd, type: 2}
 --- !u!1 &5955099657732232863
 GameObject:
   m_ObjectHideFlags: 0
