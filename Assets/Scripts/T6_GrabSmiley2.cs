@@ -22,10 +22,11 @@ public class T6_GrabSmiley2 : MonoBehaviour
     [SerializeField]string smileyTagName;
 
     [SerializeField]Transform maxGrabDistance;
+    [SerializeField]Transform startPosition;
     GameObject smileyObject;
     Rigidbody2D rb;
     Collider2D hookCollider;
-    Vector3 startPosition;
+
 
     #region Awake and Start
     private void Awake()
@@ -36,10 +37,6 @@ public class T6_GrabSmiley2 : MonoBehaviour
         hasLauchHook = false;
         canThrow = false;
         hasEmoji = false;
-    }
-    void Start()
-    {   
-        startPosition = transform.position;
     }
     #endregion
     void Update()
@@ -92,18 +89,20 @@ public class T6_GrabSmiley2 : MonoBehaviour
     public void StopHook()
     {
         //No Emoji
-        if (transform.position.x < startPosition.x && isComingBackHook && !hasEmoji)
+        if (transform.position.x < startPosition.position.x && isComingBackHook && !hasEmoji)
         {
             rb.velocity = new Vector2(0, 0);
+            transform.position = startPosition.position;
             isComingBackHook = false;
             canLaunch = true;
 
         }
 
         //Got Emoji
-        if (transform.position.x < startPosition.x && isComingBackHook && hasEmoji)
+        if (transform.position.x < startPosition.position.x && isComingBackHook && hasEmoji)
         {
             rb.velocity = new Vector2(0, 0);
+            transform.position = startPosition.position;
             isComingBackHook = false;
             canThrow = true;
 
@@ -113,7 +112,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
     public void EmojiComeBackWithHook()
     {
         //ramène le smiley au joueur
-        if (transform.position.x > startPosition.x)
+        if (transform.position.x > startPosition.position.x)
         {
             smileyObject.transform.position = gameObject.transform.position;
         }
