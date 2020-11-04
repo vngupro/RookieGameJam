@@ -13,6 +13,7 @@ public class T6_EmojiControler : MonoBehaviour
     private float maxSpeed;
     private float globalSpeed;
     public float randomSpeed;
+    //[SerializeField] float factorSpeed = 0.1f;
 
     EmojiType type;
     List<T6_EmojiClass> emojiList;

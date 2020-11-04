@@ -22,14 +22,14 @@ public class T6_WaveConfig : ScriptableObject
     [SerializeField] List<T6_EmojiClass> emojiList = new List<T6_EmojiClass>{
         new T6_EmojiClass{
             type = EmojiType.HAPPY,
-            limitNumber = 3,
+            limitNumber = 100,
             minSpeed = 0.5f,
             maxSpeed = 2.5f
         },
 
         new T6_EmojiClass{ 
             type = EmojiType.SAD, 
-            limitNumber = 3,
+            limitNumber = 100,
             minSpeed = 0.5f,
             maxSpeed = 2.5f
         },
@@ -37,7 +37,7 @@ public class T6_WaveConfig : ScriptableObject
         new T6_EmojiClass
         {
             type = EmojiType.ANGRY,
-            limitNumber = 3,
+            limitNumber = 100,
             minSpeed = 0.5f,
             maxSpeed = 2.5f
         },
@@ -45,7 +45,7 @@ public class T6_WaveConfig : ScriptableObject
         new T6_EmojiClass
         {
             type = EmojiType.FEAR,
-            limitNumber = 3,
+            limitNumber = 100,
             minSpeed = 0.5f,
             maxSpeed = 2.5f
         }

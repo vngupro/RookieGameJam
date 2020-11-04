@@ -1015,7 +1015,7 @@ RectTransform:
   m_Children:
   - {fileID: 1249930253}
   m_Father: {fileID: 1281766154}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1224,8 +1224,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785597398}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 13}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -72.59429, y: -230.84834, z: 95.58876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1662744177}
@@ -1233,7 +1233,7 @@ Transform:
   - {fileID: 107602469}
   - {fileID: 314245689}
   - {fileID: 171946804}
-  m_Father: {fileID: 828988222}
+  m_Father: {fileID: 1281766154}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &828988219
@@ -1315,10 +1315,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -72.59429, y: -230.84834, z: 82.58876}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 785597399}
+  m_Children: []
   m_Father: {fileID: 1281766154}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1004204196
 GameObject:
@@ -1577,6 +1576,7 @@ Transform:
   m_LocalPosition: {x: 72.59429, y: 231.84834, z: -92.58876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 785597399}
   - {fileID: 828988222}
   - {fileID: 629348247}
   - {fileID: 1473939729}
@@ -1722,7 +1722,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1281766154}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1503846227
 GameObject:
@@ -2073,9 +2073,9 @@ MonoBehaviour:
   hasEmoji: 0
   hasLauchHook: 0
   isComingBackHook: 0
-  hookSpeed: 70
+  hookSpeed: 60
   defaultForwardGrabSpeed: 10
-  emojiThrowSpeed: 100
+  emojiThrowSpeed: 60
   timeDelay: 0.1
   smileyTagName: T6_Emoji
   maxGrabDistance: {fileID: 1044777259}
@@ -2241,7 +2241,7 @@ RectTransform:
   - {fileID: 1589526038}
   - {fileID: 525899185}
   m_Father: {fileID: 1281766154}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2421,6 +2421,10 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 1589526037}
+    - target: {fileID: 5955099657712493364, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
+      propertyPath: timeBetweenEmojiSpawn
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5955099657712493365, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
       propertyPath: m_Name
       value: EmojiSpawner
