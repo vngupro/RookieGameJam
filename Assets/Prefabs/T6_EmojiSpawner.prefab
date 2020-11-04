@@ -870,6 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfStrengths: {fileID: 11400000, guid: 9578fe3774d763c4b9656b1db1139844, type: 2}
+  listEmoji: 
   rightImage: {fileID: 7093867840219872186}
   botImage: {fileID: 1531885474364609657}
   leftImage: {fileID: 5730721918021537931}
@@ -888,7 +889,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 103b7200490230a48863621a12eb96f4, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

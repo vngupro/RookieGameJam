@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a2492def1cfd64385e4b696e66a1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emojiType: 2
+  emojiType: 0
   isBeingShot: 0
   particles: {fileID: 4416443951886644732, guid: d3bc86029d6e98e4e93dbc2d9023c214, type: 3}
   point: 1

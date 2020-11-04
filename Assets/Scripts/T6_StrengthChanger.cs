@@ -24,7 +24,6 @@ public class T6_StrengthChanger : MonoBehaviour
         animator = GetComponent<Animator>();
         ChangeStrengths();
     }
-
     private void ChangeStrengths()
     {
         listOfStrengths.angry.Clear();
@@ -103,6 +102,7 @@ public class T6_StrengthChanger : MonoBehaviour
                 emoji = listEmoji[i];
                 break;
         }
+
         listEmoji.Clear();
     }
   
@@ -110,5 +110,11 @@ public class T6_StrengthChanger : MonoBehaviour
     {
         ChangeStrengths();
         animator.SetTrigger("ChangeTriForce");
+        Time.timeScale = .2f;
+    }
+
+    public void NormalTime()
+    {
+        Time.timeScale = 1;
     }
 }
