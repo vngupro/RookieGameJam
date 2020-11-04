@@ -19,7 +19,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
     [SerializeField]
     private float emojiThrowSpeed;
     [SerializeField]
-    private float t; // durée de temps pour un délais
+    private float timeDelay; // durée de temps pour un délais
     private float actualSpeed;
 
     [SerializeField] private string smileyTagName;
@@ -41,10 +41,10 @@ public class T6_GrabSmiley2 : MonoBehaviour
     void Update()
     {
         //debug des bools
-        print("canGrab:" + canGrab);
-        print("canThrow:" + canThrow);
-        print("hasEmoji:" + hasEmoji);
-        print("isFollowingGrab:" + isFollowingGrab);
+        //print("canGrab:" + canGrab);
+        //print("canThrow:" + canThrow);
+        //print("hasEmoji:" + hasEmoji);
+        //print("isFollowingGrab:" + isFollowingGrab);
 
         //Lancer le grapin
         if (Input.GetAxis("Fire1") == 1 && canGrab && canThrow == false && hasEmoji == false)
@@ -76,7 +76,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
                 smileyObject.transform.position = gameObject.transform.position;
                 rb.velocity = new Vector2(-actualSpeed, 0);
                 gameObject.GetComponent<BoxCollider2D>().enabled = false; //desactiver collider grab
-                smileyObject.GetComponent<CircleCollider2D>().enabled = false; //desactiver collider smiley
+                smileyObject.GetComponent<Collider2D>().enabled = false; //desactiver collider smiley
             }
             //s'arrête avec le smiley quand il est arrivé, replacement du grab
             else
@@ -90,8 +90,8 @@ public class T6_GrabSmiley2 : MonoBehaviour
             {
                 transform.position = new Vector2(startPosition.x, transform.position.y); //reset du grab
                 smileyObject.GetComponent<Rigidbody2D>().velocity = new Vector3(emojiThrowSpeed,0); // on envoie le smiley droit devant
-                smileyObject.GetComponent<CircleCollider2D>().enabled = true; //activer le collider du smiley
-                StartCoroutine(delay(t));
+                smileyObject.GetComponent<Collider2D>().enabled = true; //activer le collider du smiley
+                StartCoroutine(delay(timeDelay));
                 gameObject.GetComponent<BoxCollider2D>().enabled = true; // activer collider grab
                 //smileyObject.transform.position = transform.position;
                 

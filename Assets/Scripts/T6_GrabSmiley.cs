@@ -7,12 +7,15 @@ public class T6_GrabSmiley : MonoBehaviour
 {
     bool canGrab = true;
     bool hasGrabbedSmiley, canThrow, isFollowGrab = false;
-    private Rigidbody2D rb2D;
+
     public float grabSpeed;
     public float returnGrabSpeed, throwSpeed;
+    public string emojiTag;
+
+    private Rigidbody2D rb2D;
     private GameObject smileyGrabbed;
     private Vector3 startPos;
-    public string emojiTag;
+
     private void Start()
     {
         rb2D = gameObject.GetComponent<Rigidbody2D>();
