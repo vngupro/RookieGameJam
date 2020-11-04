@@ -49,6 +49,10 @@ public class T6_GrabSmiley2 : MonoBehaviour
             EmojiComeBackWithHook();
             EmojiThrow();
         }
+        else
+        {
+            canThrow = false;
+        }
     }
     public void HookBehaviour()
     {
@@ -104,7 +108,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
             rb.velocity = new Vector2(0, 0);
             transform.position = startPosition.position;
             isComingBackHook = false;
-            canThrow = true;
+            StartCoroutine(ThrowDelay(timeDelay));
 
         }
     }
@@ -131,6 +135,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
             smileyObject.GetComponent<T6_EmojiInteractions>().isBeingShot = true;
             StartCoroutine(delay(timeDelay));
             smileyObject.GetComponent<Collider2D>().isTrigger = false;
+
         }
     }
     IEnumerator delay(float t)
@@ -141,6 +146,11 @@ public class T6_GrabSmiley2 : MonoBehaviour
         canThrow = false;
     }
 
+    IEnumerator ThrowDelay(float t)
+    {
+        yield return new WaitForSeconds(t);
+        canThrow = true;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
