@@ -2076,7 +2076,7 @@ MonoBehaviour:
   hookSpeed: 10
   defaultForwardGrabSpeed: 10
   emojiThrowSpeed: 10
-  timeDelay: 0
+  timeDelay: 0.2
   smileyTagName: T6_Emoji
   maxGrabDistance: {fileID: 1044777259}
 --- !u!61 &1726689381

@@ -20,8 +20,7 @@ public class T6_EmojiInteractions : MonoBehaviour
         {
 
             if (collision.gameObject.GetComponent<T6_EmojiInteractions>().emojiType == strength[0] /*|| collision.gameObject.GetComponent<T6_EmojiInteractions>().emojiType == strength[1]*/)
-            {
-
+            { 
                 Destroy(collision.gameObject);
                 Destroy(this.gameObject, .5f);
                 SpawnParticles();
@@ -29,7 +28,6 @@ public class T6_EmojiInteractions : MonoBehaviour
             }
             else
             {
-
                 this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             }

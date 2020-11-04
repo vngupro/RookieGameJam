@@ -25,12 +25,14 @@ public class T6_GrabSmiley2 : MonoBehaviour
     [SerializeField]Transform maxGrabDistance;
     GameObject smileyObject;
     Rigidbody2D rb;
+    Collider2D hookCollider;
     Vector3 startPosition;
 
     #region Awake and Start
     private void Awake()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        hookCollider = GetComponent<Collider2D>();
         canLaunch = true;
         hasLauchHook = false;
         canThrow = false;
@@ -46,12 +48,11 @@ public class T6_GrabSmiley2 : MonoBehaviour
     {
         HookBehaviour();
 
-        //DEBUGGING 
-
         //si on a un emoji
         if (hasEmoji == true)
         {
             EmojiComeBackWithHook();
+
             //lance l'émoji
             if (Input.GetAxis("Fire1") == 1 && canThrow)
             {
