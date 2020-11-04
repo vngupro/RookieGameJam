@@ -22,23 +22,28 @@ public class T6_StrengthChanger : MonoBehaviour
 
     public void ChangeStrengths()
     {
-        int i = Random.Range(1, 3);
+        int i = Random.Range(0 , listEmoji.Count );
 
+        while (listEmoji[i] == EmojiType.HAPPY)
+        {
+            i = Random.Range(1, listEmoji.Count );
+        }
+        
         listOfStrengths.happy.Add(listEmoji[i]);
         listEmoji.RemoveAt(i);
 
-        i = Random.Range(0, 2);
+        i = Random.Range(0, listEmoji.Count);
         while (listEmoji[i] == EmojiType.ANGRY)
         {
-            i = Random.Range(0, 2);
+            i = Random.Range(0, listEmoji.Count);
         }
         listOfStrengths.angry.Add(listEmoji[i]);
         listEmoji.RemoveAt(i);
 
-        i = Random.Range(0, 1);
+        i = Random.Range(0, listEmoji.Count);
         while (listEmoji[i] == EmojiType.SAD)
         {
-            i = Random.Range(0, 1);
+            i = Random.Range(0, listEmoji.Count);
         }
         listOfStrengths.sad.Add(listEmoji[i]);
         listEmoji.RemoveAt(i);
