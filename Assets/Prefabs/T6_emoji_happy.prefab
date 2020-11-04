@@ -106,7 +106,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!114 &8301695065577990284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +137,7 @@ MonoBehaviour:
   isBeingShot: 0
   particles: {fileID: 4416443951886644732, guid: d3bc86029d6e98e4e93dbc2d9023c214, type: 3}
   point: 1
+  strength: 
 --- !u!58 &138282036220347332
 CircleCollider2D:
   m_ObjectHideFlags: 0

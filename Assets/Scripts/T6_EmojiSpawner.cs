@@ -10,6 +10,7 @@ public class T6_EmojiSpawner : MonoBehaviour
     [SerializeField] private GameObject happyEmoji;
     [SerializeField] private GameObject sadEmoji;
     [SerializeField] private GameObject angryEmoji;
+    [SerializeField] private GameObject fearEmoji;
     [SerializeField] private GameObject[] lines;
 
     [SerializeField] List<T6_WaveConfig> WaveList = new List<T6_WaveConfig>();
@@ -21,6 +22,7 @@ public class T6_EmojiSpawner : MonoBehaviour
     private int happyEmojiLimit;
     private int sadEmojiLimit;
     private int angryEmojiLimit;
+    private int fearEmojiLimit;
 
     private int currentWave = 0;
 
@@ -58,7 +60,7 @@ public class T6_EmojiSpawner : MonoBehaviour
         }
 
         waveDuration -= Time.deltaTime;
-        if( (waveDuration <= 0 || (angryEmojiLimit == 0 && sadEmojiLimit == 0 && happyEmojiLimit == 0)) && currentWave < WaveList.Count - 1)
+        if( (waveDuration <= 0 || (angryEmojiLimit == 0 && sadEmojiLimit == 0 && happyEmojiLimit == 0 && fearEmojiLimit == 0)) && currentWave < WaveList.Count - 1)
         {
             GetNextWave();
         }
@@ -103,6 +105,13 @@ public class T6_EmojiSpawner : MonoBehaviour
                     angryEmojiLimit--;
                 }
                 break;
+            case 3:
+                if (fearEmojiLimit > 0)
+                {
+                    obj = Instantiate(fearEmoji, lines[line].transform);
+                    fearEmojiLimit--;
+                }
+                break;
         }
         timer = timeBetweenEmojiSpawn;
         isSpawning = false;
@@ -133,6 +142,10 @@ public class T6_EmojiSpawner : MonoBehaviour
             else if (EmojiList[i].type == angryEmoji.GetComponent<T6_EmojiInteractions>().emojiType)
             {
                 angryEmojiLimit = EmojiList[i].limitNumber;
+            }
+            else if (EmojiList[i].type == fearEmoji.GetComponent<T6_EmojiInteractions>().emojiType)
+            {
+                fearEmojiLimit = EmojiList[i].limitNumber;
             }
         }
     }

@@ -676,8 +676,7 @@ MonoBehaviour:
   fillImage: {fileID: 327101693}
   orange: {r: 1, g: 0.6331736, b: 0.0990566, a: 1}
   red: {r: 1, g: 0, b: 0, a: 1}
-  green: {r: 0, g: 0, b: 0, a: 0}
-  healthManager: {fileID: 2121707461}
+  green: {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &629348244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1503,7 +1502,7 @@ MonoBehaviour:
   hasEmoji: 0
   defaultForwardGrabSpeed: 12
   emojiThrowSpeed: 8
-  t: 0.2
+  timeDelay: 0
   smileyTagName: T6_Emoji
 --- !u!61 &1726689381
 BoxCollider2D:
