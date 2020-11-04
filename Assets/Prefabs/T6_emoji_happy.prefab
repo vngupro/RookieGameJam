@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8301695065577990285}
   - component: {fileID: 8301695065577990274}
-  - component: {fileID: 5166868056672260826}
   - component: {fileID: -5949155285644934538}
   - component: {fileID: 8301695065577990284}
   - component: {fileID: 3432451852259687958}
+  - component: {fileID: 138282036220347332}
   m_Layer: 0
   m_Name: T6_emoji_happy
   m_TagString: T6_Emoji
@@ -86,32 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5166868056672260826
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8301695065577990275}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.2676923, y: 2.8307693}
-    newSize: {x: 2.36, y: 2.35}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.36, y: 2.35}
-  m_EdgeRadius: 0
 --- !u!50 &-5949155285644934538
 Rigidbody2D:
   serializedVersion: 4
@@ -147,7 +121,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 4416443951886644732, guid: d3bc86029d6e98e4e93dbc2d9023c214, type: 3}
   emojiSpawner: {fileID: 5955099657712493365, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
-  randomSpeed: 0
 --- !u!114 &3432451852259687958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +136,20 @@ MonoBehaviour:
   emojiType: 0
   isBeingShot: 0
   particles: {fileID: 4416443951886644732, guid: d3bc86029d6e98e4e93dbc2d9023c214, type: 3}
+  point: 1
+--- !u!58 &138282036220347332
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8301695065577990275}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.4153845
