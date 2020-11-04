@@ -446,7 +446,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390130647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.52, y: 0, z: 0}
+  m_LocalPosition: {x: 6.76, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1498,12 +1498,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fbceef42d9a45438e08fd9b7a1bedc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxGrabDistance: {fileID: 390130648}
+  canLaunch: 1
+  canThrow: 0
   hasEmoji: 0
+  hasLauchHook: 0
+  isComingBackHook: 0
+  hookSpeed: 10
   defaultForwardGrabSpeed: 12
   emojiThrowSpeed: 8
-  timeDelay: 0
+  timeDelay: 0.2
   smileyTagName: T6_Emoji
+  maxGrabDistance: {fileID: 390130648}
 --- !u!61 &1726689381
 BoxCollider2D:
   m_ObjectHideFlags: 0

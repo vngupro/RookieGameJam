@@ -1,13 +1,31 @@
-﻿using System.Collections;
+﻿using Microsoft.Unity.VisualStudio.Editor;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class T6_StrengthChanger : MonoBehaviour
 {
     public T6_SmileyStrengths listOfStrengths;
     public List<EmojiType> listEmoji;
+    private Animator animator;
+    [SerializeField] private UnityEngine.UI.Image rightImage;
+    [SerializeField] private UnityEngine.UI.Image botImage;
+    [SerializeField] private UnityEngine.UI.Image leftImage;
 
-    private void Start()
+    [SerializeField] private Sprite angry;
+    [SerializeField] private Sprite sad;
+    [SerializeField] private Sprite fear;
+
+    EmojiType emoji;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        ChangeStrengths();
+    }
+
+    private void ChangeStrengths()
     {
         listOfStrengths.angry.Clear();
         listOfStrengths.sad.Clear();
@@ -17,38 +35,80 @@ public class T6_StrengthChanger : MonoBehaviour
         listEmoji.Add(EmojiType.ANGRY);
         listEmoji.Add(EmojiType.SAD);
         listEmoji.Add(EmojiType.FEAR);
-        ChangeStrengths();
-    }
 
-    public void ChangeStrengths()
-    {
-        int i = Random.Range(0 , listEmoji.Count );
-
-        while (listEmoji[i] == EmojiType.HAPPY)
-        {
-            i = Random.Range(1, listEmoji.Count );
-        }
+        int i = Random.Range(1 , listEmoji.Count );
         
         listOfStrengths.happy.Add(listEmoji[i]);
         listEmoji.RemoveAt(i);
-
-        i = Random.Range(0, listEmoji.Count);
-        while (listEmoji[i] == EmojiType.ANGRY)
+        
+        switch (i)
         {
-            i = Random.Range(0, listEmoji.Count);
+            case 1:
+                i = Random.Range(1, 2);
+                listOfStrengths.angry.Add(listEmoji[i]);
+                rightImage.sprite = angry;
+                emoji = listEmoji[i];
+                break;
+            case 2:
+                i = Random.Range(1, 2);
+                listOfStrengths.sad.Add(listEmoji[i]);
+                rightImage.sprite = sad;
+                emoji = listEmoji[i];
+                break;
+            case 3:
+                i = Random.Range(1, 2);
+                listOfStrengths.fear.Add(listEmoji[i]);
+                rightImage.sprite = fear;
+                emoji = listEmoji[i];
+                break;
         }
-        listOfStrengths.angry.Add(listEmoji[i]);
         listEmoji.RemoveAt(i);
-
-        i = Random.Range(0, listEmoji.Count);
-        while (listEmoji[i] == EmojiType.SAD)
+        i = 1;
+        switch (emoji)
         {
-            i = Random.Range(0, listEmoji.Count);
+            case EmojiType.ANGRY:
+                listOfStrengths.angry.Add(listEmoji[i]);
+                botImage.sprite = angry;
+                emoji = listEmoji[i];
+                break;
+            case EmojiType.SAD:
+                listOfStrengths.sad.Add(listEmoji[i]);
+                botImage.sprite = sad;
+                emoji = listEmoji[i];
+                break;
+            case EmojiType.FEAR:
+                listOfStrengths.fear.Add(listEmoji[i]);
+                botImage.sprite = fear;
+                emoji = listEmoji[i];
+                break;
         }
-        listOfStrengths.sad.Add(listEmoji[i]);
         listEmoji.RemoveAt(i);
-        listOfStrengths.fear.Add(listEmoji[0]);
+        i = 0;
+
+        switch (emoji)
+        {
+            case EmojiType.ANGRY:
+                listOfStrengths.angry.Add(listEmoji[i]);
+                leftImage.sprite = angry;
+                emoji = listEmoji[i];
+                break;
+            case EmojiType.SAD:
+                listOfStrengths.sad.Add(listEmoji[i]);
+                leftImage.sprite = sad;
+                emoji = listEmoji[i];
+                break;
+            case EmojiType.FEAR:
+                listOfStrengths.fear.Add(listEmoji[i]);
+                leftImage.sprite = fear;
+                emoji = listEmoji[i];
+                break;
+        }
         listEmoji.Clear();
-
+    }
+  
+    public void ChangeAnimation()
+    {
+        ChangeStrengths();
+        animator.SetTrigger("ChangeTriForce");
     }
 }
