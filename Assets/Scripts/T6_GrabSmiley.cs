@@ -21,7 +21,7 @@ public class T6_GrabSmiley : MonoBehaviour
     }
     void Update()
     {
-        print(canThrow);
+        //print(canThrow);
         if (isFollowGrab) { smileyGrabbed.transform.position = gameObject.transform.position; }
         if (Input.GetKeyDown(KeyCode.Mouse0) && canGrab && hasGrabbedSmiley == false)
         {  
@@ -44,13 +44,13 @@ public class T6_GrabSmiley : MonoBehaviour
                 canThrow = true;
             }
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && canThrow) // si clic gauche...
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canThrow && hasGrabbedSmiley) // si clic gauche...
         {
             //jette le smiley
             isFollowGrab = false;
             canGrab = true;
             hasGrabbedSmiley = false;
-            print("throw");
+            //print("throw");
             /*smileyGrabbed.GetComponent<Rigidbody2D>().velocity = new Vector2(throwSpeed, 0);*/
             smileyGrabbed.GetComponent<Rigidbody2D>().AddForce(transform.right * throwSpeed);
             smileyGrabbed = null;

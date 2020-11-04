@@ -14,7 +14,6 @@ public class T6_ProgresBar : MonoBehaviour
     [SerializeField] private Color orange;
     [SerializeField] private Color red;
     [SerializeField] private Color green;
-    [SerializeField] private T6_HealthSystem healthManager;
 
     //private void Awake()
     //{
@@ -32,7 +31,7 @@ public class T6_ProgresBar : MonoBehaviour
         if (!timerIsUpdating)
         {
             slider.value = timer / maxTimer;
-            Debug.Log(timer);
+            //Debug.Log(timer);
             timerIsUpdating = true;
             StartCoroutine(UpdateTimerAfterSec());
         }
