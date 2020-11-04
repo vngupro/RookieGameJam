@@ -36,7 +36,7 @@ public class T6_Victory : MonoBehaviour
             T6_TimerEvent.victoryTimer.Invoke(new VictoryTimerData(timer));
         }
 
-        if (timer < (maxTime / 5) * (milestone +1))
+        if (timer < (maxTime / 5) * (milestone +1) && milestone >= 0)
         {
             T6_TimerEvent.milestoneTimer.Invoke(new MilestoneTimerData(timer, milestone));
             milestone--;
