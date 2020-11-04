@@ -226,6 +226,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5eaedddf214a187469eb553ac0ed85cd, type: 2}
   timeBetweenEmojiSpawn: 1
   gameOverScreen: {fileID: 0}
+  smileyStrengths: {fileID: 11400000, guid: 9578fe3774d763c4b9656b1db1139844, type: 2}
 --- !u!114 &-6598673638283647039
 MonoBehaviour:
   m_ObjectHideFlags: 0

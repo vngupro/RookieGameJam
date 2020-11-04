@@ -136,7 +136,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
     IEnumerator delay(float t)
     {
         yield return new WaitForSeconds(t);
-        //canLaunch = true;
+        canLaunch = true;
         hasEmoji = false;
         canThrow = false;
     }

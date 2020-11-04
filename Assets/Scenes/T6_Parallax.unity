@@ -2385,22 +2385,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -6598673638283647039, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
-      propertyPath: listEmoji.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -6598673638283647039, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
-      propertyPath: listEmoji.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6598673638283647039, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
-      propertyPath: listEmoji.Array.data[2]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -6598673638283647039, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
-      propertyPath: listEmoji.Array.data[3]
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5955099657712493364, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
       propertyPath: gameOverScreen
       value: 
