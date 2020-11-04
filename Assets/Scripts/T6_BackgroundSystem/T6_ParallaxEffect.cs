@@ -6,12 +6,10 @@ using UnityEngine.UI;
 
 public class T6_ParallaxEffect : MonoBehaviour
 {
-    [SerializeField] private float movingSpeed = 0.1f;
+    public float movingSpeed = 0.1f;
     [SerializeField] private float id;
     [SerializeField] Transform before;
-    [SerializeField] Transform after;
     private float length, startPosX;
-    private Vector3 spriteSize;
     private float distance = 0.0f;
     private void Start()
     {
@@ -26,11 +24,9 @@ public class T6_ParallaxEffect : MonoBehaviour
     public void InfiniteBackground()
     {
         distance = transform.position.x - startPosX;
-        Debug.Log("Length = " + length);
-        Debug.Log("Distance = " + distance);
         transform.position = new Vector3(transform.position.x - movingSpeed * Time.deltaTime, transform.position.y, transform.position.z);
 
-        if (distance < -length * id && transform.position.x != startPosX)
+        if (distance < -length * id && transform.position.x != startPosX && id !=6)
         {
             transform.position = new Vector3(before.position.x + length - 0.1f, transform.position.y, transform.position.z);
         }

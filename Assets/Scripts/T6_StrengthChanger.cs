@@ -21,6 +21,7 @@ public class T6_StrengthChanger : MonoBehaviour
 
     private void Awake()
     {
+        T6_TimerEvent.milestoneTimer.AddListener(Milestone);
         animator = GetComponent<Animator>();
         ChangeStrengths();
     }
@@ -110,11 +111,22 @@ public class T6_StrengthChanger : MonoBehaviour
     {
         ChangeStrengths();
         animator.SetTrigger("ChangeTriForce");
-        Time.timeScale = .2f;
+        Time.timeScale = .1f;
     }
 
     public void NormalTime()
     {
         Time.timeScale = 1;
+    }
+
+    private void Milestone(MilestoneTimerData data)
+    {
+        StartCoroutine(MilestoneWait());
+    }
+
+    IEnumerator MilestoneWait()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        ChangeAnimation();
     }
 }
