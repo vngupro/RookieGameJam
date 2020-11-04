@@ -40,6 +40,14 @@ public class T6_WaveConfig : ScriptableObject
             limitNumber = 3,
             minSpeed = 0.5f,
             maxSpeed = 2.5f
+        },
+        
+        new T6_EmojiClass
+        {
+            type = EmojiType.FEAR,
+            limitNumber = 3,
+            minSpeed = 0.5f,
+            maxSpeed = 2.5f
         }
     };
 

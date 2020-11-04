@@ -92,7 +92,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
                 smileyObject.GetComponent<Rigidbody2D>().velocity = new Vector3(emojiThrowSpeed,0); // on envoie le smiley droit devant
                 smileyObject.GetComponent<CircleCollider2D>().enabled = true; //activer le collider du smiley
                 smileyObject.GetComponent<T6_EmojiInteractions>().isBeingShot = true;
-                StartCoroutine(delay(t));
+                StartCoroutine(delay(timeDelay));
                 gameObject.GetComponent<BoxCollider2D>().enabled = true; // activer collider grab
                 //smileyObject.transform.position = transform.position;
                 

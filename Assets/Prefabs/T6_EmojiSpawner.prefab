@@ -170,6 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5955099657712493371}
   - component: {fileID: 5955099657712493364}
+  - component: {fileID: -6598673638283647039}
   m_Layer: 0
   m_Name: T6_EmojiSpawner
   m_TagString: Untagged
@@ -212,6 +213,7 @@ MonoBehaviour:
   happyEmoji: {fileID: 8301695065577990275, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
   sadEmoji: {fileID: 3257909192942178877, guid: fafa1240f1d506241b4a48f3b3f24c65, type: 3}
   angryEmoji: {fileID: 4264844370208374463, guid: 158e3f987fbb47b43b558acf67a987dc, type: 3}
+  fearEmoji: {fileID: 8433316471431148864, guid: 33ad78da958a3e444aa51841440e460d, type: 3}
   lines:
   - {fileID: 5955099656746496269}
   - {fileID: 5955099658219166304}
@@ -224,6 +226,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5eaedddf214a187469eb553ac0ed85cd, type: 2}
   timeBetweenEmojiSpawn: 1
   gameOverScreen: {fileID: 0}
+--- !u!114 &-6598673638283647039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5955099657712493365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c417f0a279c0154c835e5a76f1c0c8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfStrengths: {fileID: 11400000, guid: 9578fe3774d763c4b9656b1db1139844, type: 2}
+  listEmoji: 
 --- !u!1 &5955099657732232863
 GameObject:
   m_ObjectHideFlags: 0

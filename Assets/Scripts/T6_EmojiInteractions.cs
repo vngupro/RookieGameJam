@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public enum EmojiType { HAPPY , SAD , ANGRY }
+public enum EmojiType { HAPPY , SAD , ANGRY , FEAR }
 
 public class T6_EmojiInteractions : MonoBehaviour
 {
@@ -11,69 +11,27 @@ public class T6_EmojiInteractions : MonoBehaviour
     public bool isBeingShot = false;
     public ParticleSystem particles;
     public float point = 1.0f;
+    public List<EmojiType> strength;
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("T6_Emoji") && isBeingShot)
         {
-            switch (emojiType)
+
+            if (collision.gameObject.GetComponent<T6_EmojiInteractions>().emojiType == strength[0] /*|| collision.gameObject.GetComponent<T6_EmojiInteractions>().emojiType == strength[1]*/)
             {
-                case EmojiType.HAPPY:
-                    switch (collision.gameObject.GetComponent<T6_EmojiInteractions>().emojiType)
-                    {
-                        case EmojiType.HAPPY:
-                            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                            break;
-                        case EmojiType.SAD:
-                            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                            break;
-                        case EmojiType.ANGRY:
-                            Destroy(collision.gameObject);
-                            Destroy(this.gameObject, .5f);
-                            SpawnParticles();
-                            T6_ScoreEvent.hitWeakEmoji.Invoke(new HitScoreEventData(collision.gameObject, gameObject, point));
-                            break;
-                    }
-                    break;
 
-                case EmojiType.SAD:
-                    switch (collision.gameObject.GetComponent<T6_EmojiInteractions>().emojiType)
-                    {
-                        case EmojiType.HAPPY:
-                            Destroy(collision.gameObject);
-                            Destroy(this.gameObject, .5f);
-                            SpawnParticles();
-                            break;
-                        case EmojiType.SAD:
-                            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                            break;
-                        case EmojiType.ANGRY:
-                            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                            break;
-                    }
-                    break;
+                Destroy(collision.gameObject);
+                Destroy(this.gameObject, .5f);
+                SpawnParticles();
+                T6_ScoreEvent.hitWeakEmoji.Invoke(new HitScoreEventData(collision.gameObject, gameObject, point));
+            }
+            else
+            {
 
-                case EmojiType.ANGRY:
-                    switch (collision.gameObject.GetComponent<T6_EmojiInteractions>().emojiType)
-                    {
-                        case EmojiType.HAPPY:
-                            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                            break;
-                        case EmojiType.SAD:
-                            Destroy(collision.gameObject);
-                            Destroy(this.gameObject, .5f);
-                            SpawnParticles();
-                            break;
-                        case EmojiType.ANGRY:
-                            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                            break;
-                    }
-                    break;
+                this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             }
             isBeingShot = false;
         }
