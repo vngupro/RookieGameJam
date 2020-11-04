@@ -36,6 +36,8 @@ public class T6_EmojiSpawner : MonoBehaviour
 
     [SerializeField] GameObject gameOverScreen;
 
+    public T6_SmileyStrengths smileyStrengths;
+
     private void Awake()
     {
         if(instance == null)
@@ -88,6 +90,7 @@ public class T6_EmojiSpawner : MonoBehaviour
                 if(happyEmojiLimit > 0)
                 {
                     obj = Instantiate(happyEmoji, lines[line].transform);
+                    obj.GetComponent<T6_EmojiInteractions>().strength.Add(smileyStrengths.happy[0]);
                     happyEmojiLimit--;
                 }
                 break;
@@ -95,6 +98,7 @@ public class T6_EmojiSpawner : MonoBehaviour
                 if (sadEmojiLimit > 0)
                 {
                     obj = Instantiate(sadEmoji, lines[line].transform);
+                    obj.GetComponent<T6_EmojiInteractions>().strength.Add(smileyStrengths.sad[0]);
                     sadEmojiLimit--;
                 }
                 break;
@@ -102,6 +106,7 @@ public class T6_EmojiSpawner : MonoBehaviour
                 if (angryEmojiLimit > 0)
                 {
                     obj = Instantiate(angryEmoji, lines[line].transform);
+                    obj.GetComponent<T6_EmojiInteractions>().strength.Add(smileyStrengths.angry[0]);
                     angryEmojiLimit--;
                 }
                 break;
@@ -109,6 +114,7 @@ public class T6_EmojiSpawner : MonoBehaviour
                 if (fearEmojiLimit > 0)
                 {
                     obj = Instantiate(fearEmoji, lines[line].transform);
+                    obj.GetComponent<T6_EmojiInteractions>().strength.Add(smileyStrengths.fear[0]);
                     fearEmojiLimit--;
                 }
                 break;

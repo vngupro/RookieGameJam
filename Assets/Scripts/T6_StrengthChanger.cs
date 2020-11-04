@@ -9,6 +9,10 @@ public class T6_StrengthChanger : MonoBehaviour
 
     private void Start()
     {
+        listOfStrengths.angry.Clear();
+        listOfStrengths.sad.Clear();
+        listOfStrengths.happy.Clear();
+        listOfStrengths.fear.Clear();
         listEmoji.Add(EmojiType.HAPPY);
         listEmoji.Add(EmojiType.ANGRY);
         listEmoji.Add(EmojiType.SAD);
