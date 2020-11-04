@@ -123,7 +123,8 @@ public class T6_GrabSmiley2 : MonoBehaviour
         //s'arrête avec le smiley quand il est arrivé, replacement du grab
         else
         {
-            smileyObject.transform.position = transform.position;
+            if(smileyObject != null)
+                smileyObject.transform.position = transform.position;
         }
     }
 

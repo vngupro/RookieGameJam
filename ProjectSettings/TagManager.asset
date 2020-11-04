@@ -6,6 +6,7 @@ TagManager:
   tags:
   - T6_Emoji
   - T6_EndLine
+  - T6_LimitLine
   layers:
   - Default
   - TransparentFX

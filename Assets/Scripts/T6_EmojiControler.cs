@@ -18,6 +18,10 @@ public class T6_EmojiControler : MonoBehaviour
     EmojiType type;
     List<T6_EmojiClass> emojiList;
 
+    private void Awake()
+    {
+        T6_TimerEvent.milestoneTimer.AddListener(DestroyAllSpawnEmoji);
+    }
     private void Start()
     {
         type = GetComponent<T6_EmojiInteractions>().emojiType;
@@ -48,16 +52,41 @@ public class T6_EmojiControler : MonoBehaviour
         emojiTransform.Translate(-randomSpeed, 0, 0);
     }
 
+    public void DestroyEmoji()
+    {
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        Instantiate(particles, this.gameObject.transform);
+        //speed = 0;
+        randomSpeed = 0;
+        this.GetComponent<Collider2D>().enabled = false;
+        Destroy(this.gameObject, .5f);
+    }
+
+    public void DestroyAllSpawnEmoji(MilestoneTimerData data)
+    {
+        if(gameObject != null)
+        {
+            StartCoroutine(WaitBeforeDestroyAll());
+
+        }
+    }
+
+    IEnumerator WaitBeforeDestroyAll()
+    {
+        yield return new WaitForSeconds(2.0f);
+        DestroyEmoji();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("T6_EndLine"))
         {
-            this.GetComponent<SpriteRenderer>().enabled = false;
-            Instantiate(particles, this.gameObject.transform);
-            //speed = 0;
-            randomSpeed = 0;
-            this.GetComponent<Collider2D>().enabled = false;
-            Destroy(this.gameObject, .5f);
+            DestroyEmoji();
+        }
+
+        if (collision.CompareTag("T6_LimitLine"))
+        {
+            DestroyEmoji();
         }
     }
 }
