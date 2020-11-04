@@ -1,129 +1,155 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class T6_GrabSmiley2 : MonoBehaviour
 {
-    private GameObject smileyObject;
-    private Rigidbody2D rb; // rigidbody du grab
-    public Transform maxGrabDistance;
+    [Header("DEBUG Bool")]
+    [SerializeField]bool canLaunch = true; // peut lancer le grab
+    [SerializeField]bool canThrow = false; //peut lancer le smiley
+    [SerializeField]bool hasEmoji = false; //si le grapin a un emoji
+    [SerializeField] bool hasLauchHook = false;
+    [SerializeField] bool isComingBackHook = false;
+    [SerializeField]bool isFollowingGrab = false; //si l'émoji suit le grab
 
-    private bool canGrab; // peut lancer le grab
-    private bool canThrow; //peut lancer le smiley
-    [SerializeField]
-    private bool hasEmoji; //si le grapin a un emoji
-    private bool isFollowingGrab; //si l'émoji suit le grab
+    [Header("Debug Speed")]
+    [SerializeField]float hookSpeed = 10.0f;
 
-    [SerializeField]
-    private float defaultForwardGrabSpeed;
-    [SerializeField]
-    private float emojiThrowSpeed;
-    [SerializeField]
-    private float timeDelay; // durée de temps pour un délais
-    private float actualSpeed;
+    [Header("Hook Parameters")]
+    [SerializeField]float defaultForwardGrabSpeed = 10.0f;
+    [SerializeField]float emojiThrowSpeed = 10.0f;
+    [SerializeField]float timeDelay = 0.2f; //Délai pour éviter bug de reprend le smiley
+    [SerializeField]string smileyTagName;
 
-    [SerializeField] private string smileyTagName;
+    [SerializeField]Transform maxGrabDistance;
+    GameObject smileyObject;
+    Rigidbody2D rb;
+    Vector3 startPosition;
 
-    private Vector3 startPosition;
-    void Start()
+    #region Awake and Start
+    private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-
-        canGrab = true;
+        canLaunch = true;
+        hasLauchHook = false;
         canThrow = false;
         hasEmoji = false;
         isFollowingGrab = false;
-
-        actualSpeed = defaultForwardGrabSpeed;
-
-        startPosition = gameObject.transform.position;
     }
+    void Start()
+    {   
+        startPosition = transform.position;
+    }
+    #endregion
     void Update()
     {
-        //debug des bools
-        //print("canGrab:" + canGrab);
-        //print("canThrow:" + canThrow);
-        //print("hasEmoji:" + hasEmoji);
-        //print("isFollowingGrab:" + isFollowingGrab);
+        HookBehaviour();
 
-        //Lancer le grapin
-        if (Input.GetAxis("Fire1") == 1 && canGrab && canThrow == false && hasEmoji == false)
-        {
-            LaunchGrab();
-        }
-
-        //fait revenir le grapin
-        if (transform.position.x >= maxGrabDistance.position.x)
-        {
-            hasEmoji = false;
-            rb.velocity = new Vector2(-actualSpeed, 0);
-        }
-
-        //fait arrêter le grapin quand il est à la position de base
-        if (transform.position.x < startPosition.x && !hasEmoji && !canThrow)
-        {
-            canGrab = true;
-            rb.velocity = new Vector2(0, 0);
-        }
-
+        //DEBUGGING 
 
         //si on a un emoji
-        if(hasEmoji == true)
+        if (hasEmoji == true)
         {
-            //ramène le smiley au joueur
-            if (transform.position.x > startPosition.x)
-            {
-                smileyObject.transform.position = gameObject.transform.position;
-                rb.velocity = new Vector2(-actualSpeed, 0);
-                gameObject.GetComponent<BoxCollider2D>().enabled = false; //desactiver collider grab
-                smileyObject.GetComponent<Collider2D>().enabled = false; //desactiver collider smiley
-            }
-            //s'arrête avec le smiley quand il est arrivé, replacement du grab
-            else
-            {
-                smileyObject.transform.position = gameObject.transform.position;
-                rb.velocity = new Vector2(0, 0);
-                canThrow = true;
-            }
+            EmojiComeBackWithHook();
             //lance l'émoji
             if (Input.GetAxis("Fire1") == 1 && canThrow)
             {
-                transform.position = new Vector2(startPosition.x, transform.position.y); //reset du grab
-                smileyObject.GetComponent<Rigidbody2D>().velocity = new Vector3(emojiThrowSpeed,0); // on envoie le smiley droit devant
-                smileyObject.GetComponent<CircleCollider2D>().enabled = true; //activer le collider du smiley
+                smileyObject.GetComponent<Rigidbody2D>().velocity = new Vector3(emojiThrowSpeed, 0); // on envoie le smiley droit devant
                 smileyObject.GetComponent<T6_EmojiInteractions>().isBeingShot = true;
-                StartCoroutine(delay(t));
-                gameObject.GetComponent<BoxCollider2D>().enabled = true; // activer collider grab
-                //smileyObject.transform.position = transform.position;
-                
+                StartCoroutine(delay(timeDelay));
             }
         }
-        
-
     }
-    void LaunchGrab()
+    public void HookBehaviour()
     {
-        canGrab = false; // ne peut plus lancer le grapin
-        rb.velocity = new Vector2(actualSpeed, 0); //le grapin fonce vers la droite 
+        LaunchHook();
+        ComeBackHook();
+        StopHook();
     }
 
+    public void LaunchHook()
+    {
+        if (Input.GetAxis("Fire1") == 1 && canLaunch && canThrow == false && hasEmoji == false)
+        {
+            rb.velocity = new Vector2(hookSpeed, 0);
+            canLaunch = false;
+        }
+    }
+
+    public void ComeBackHook()
+    {
+        //No Emoji
+        if (transform.position.x >= maxGrabDistance.position.x)
+        {
+            rb.velocity = new Vector2(-hookSpeed, 0);
+            isComingBackHook = true;
+        }
+
+        //Got Emoji
+        if (hasEmoji)
+        {
+            rb.velocity = new Vector2(-hookSpeed, 0);
+            isComingBackHook = true;
+        }
+    }
+
+    public void StopHook()
+    {
+        //No Emoji
+        if (transform.position.x < startPosition.x && isComingBackHook && !hasEmoji)
+        {
+            rb.velocity = new Vector2(0, 0);
+            isComingBackHook = false;
+            canLaunch = true;
+
+        }
+
+        //Got Emoji
+        if (transform.position.x < startPosition.x && isComingBackHook && hasEmoji)
+        {
+            rb.velocity = new Vector2(0, 0);
+            isComingBackHook = false;
+            canThrow = true;
+
+        }
+    }
+
+    public void EmojiComeBackWithHook()
+    {
+        //ramène le smiley au joueur
+        if (transform.position.x > startPosition.x)
+        {
+            smileyObject.transform.position = gameObject.transform.position;
+        }
+        //s'arrête avec le smiley quand il est arrivé, replacement du grab
+        else
+        {
+            smileyObject.transform.position = transform.position;
+        }
+    }
     IEnumerator delay(float t)
     {
         yield return new WaitForSeconds(t);
-        canGrab = true;
+        //canLaunch = true;
         hasEmoji = false;
         canThrow = false;
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == smileyTagName)
         {
             smileyObject = collision.gameObject;
+            smileyObject.transform.SetParent(transform);
             hasEmoji = true;
-            smileyObject.transform.position = gameObject.transform.position;
-            isFollowingGrab = true;
         }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        collision.gameObject.transform.parent = null;
     }
 
 }

@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a2492def1cfd64385e4b696e66a1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emojiType: 0
+  emojiType: 2
   isBeingShot: 0
   particles: {fileID: 4416443951886644732, guid: d3bc86029d6e98e4e93dbc2d9023c214, type: 3}
   point: 1
@@ -150,6 +150,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0008702278, y: 0.17417227}
   serializedVersion: 2
-  m_Radius: 1.4153845
+  m_Radius: 0.7292242

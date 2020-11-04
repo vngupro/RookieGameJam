@@ -7,14 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3432451852259687958, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
-      propertyPath: emojiType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5166868056672260826, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.32
-      objectReference: {fileID: 0}
     - target: {fileID: 8301695065577990274, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -23,10 +15,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: T6_emoji_Angry
       objectReference: {fileID: 0}
-    - target: {fileID: 8301695065577990284, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
-      propertyPath: emojiSpawner
-      value: 
-      objectReference: {fileID: 5955099657712493365, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
     - target: {fileID: 8301695065577990285, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
