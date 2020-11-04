@@ -130,6 +130,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
             smileyObject.GetComponent<Rigidbody2D>().velocity = new Vector3(emojiThrowSpeed, 0); // on envoie le smiley droit devant
             smileyObject.GetComponent<T6_EmojiInteractions>().isBeingShot = true;
             StartCoroutine(delay(timeDelay));
+            smileyObject.GetComponent<Collider2D>().isTrigger = false;
         }
     }
     IEnumerator delay(float t)
@@ -148,6 +149,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
             smileyObject = collision.gameObject;
             smileyObject.transform.SetParent(transform);
             hasEmoji = true;
+            collision.isTrigger = true;
         }
     }
 
