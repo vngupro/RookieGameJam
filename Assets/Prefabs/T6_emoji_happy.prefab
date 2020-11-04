@@ -105,7 +105,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 6
 --- !u!114 &8301695065577990284
 MonoBehaviour:
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 4416443951886644732, guid: d3bc86029d6e98e4e93dbc2d9023c214, type: 3}
   emojiSpawner: {fileID: 5955099657712493365, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
+  randomSpeed: 0
 --- !u!114 &3432451852259687958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +152,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0008702278, y: 0.17417227}
+  m_Offset: {x: 0.0008702278, y: 0.17523417}
   serializedVersion: 2
-  m_Radius: 0.7292242
+  m_Radius: 0.7594265

@@ -2073,7 +2073,7 @@ MonoBehaviour:
   hasEmoji: 0
   hasLauchHook: 0
   isComingBackHook: 0
-  hookSpeed: 20
+  hookSpeed: 70
   defaultForwardGrabSpeed: 10
   emojiThrowSpeed: 100
   timeDelay: 0.1

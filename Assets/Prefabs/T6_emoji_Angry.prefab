@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5949155285644934538, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 138282036220347332, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.00694326
+      objectReference: {fileID: 0}
+    - target: {fileID: 138282036220347332, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
+      propertyPath: m_Radius
+      value: 0.74961764
+      objectReference: {fileID: 0}
     - target: {fileID: 8301695065577990274, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
       propertyPath: m_Sprite
       value: 
