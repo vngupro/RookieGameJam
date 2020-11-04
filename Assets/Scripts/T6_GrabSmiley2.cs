@@ -9,9 +9,8 @@ public class T6_GrabSmiley2 : MonoBehaviour
     [SerializeField]bool canLaunch = true; // peut lancer le grab
     [SerializeField]bool canThrow = false; //peut lancer le smiley
     [SerializeField]bool hasEmoji = false; //si le grapin a un emoji
-    [SerializeField] bool hasLauchHook = false;
+    [SerializeField] bool hasLauchHook = false; //si hasLaunch peut attraper un emoji
     [SerializeField] bool isComingBackHook = false;
-    [SerializeField]bool isFollowingGrab = false; //si l'émoji suit le grab
 
     [Header("Debug Speed")]
     [SerializeField]float hookSpeed = 10.0f;
@@ -37,7 +36,6 @@ public class T6_GrabSmiley2 : MonoBehaviour
         hasLauchHook = false;
         canThrow = false;
         hasEmoji = false;
-        isFollowingGrab = false;
     }
     void Start()
     {   
@@ -52,14 +50,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
         if (hasEmoji == true)
         {
             EmojiComeBackWithHook();
-
-            //lance l'émoji
-            if (Input.GetAxis("Fire1") == 1 && canThrow)
-            {
-                smileyObject.GetComponent<Rigidbody2D>().velocity = new Vector3(emojiThrowSpeed, 0); // on envoie le smiley droit devant
-                smileyObject.GetComponent<T6_EmojiInteractions>().isBeingShot = true;
-                StartCoroutine(delay(timeDelay));
-            }
+            EmojiThrow();
         }
     }
     public void HookBehaviour()
@@ -75,6 +66,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
         {
             rb.velocity = new Vector2(hookSpeed, 0);
             canLaunch = false;
+            hasLauchHook = true;
         }
     }
 
@@ -85,6 +77,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
         {
             rb.velocity = new Vector2(-hookSpeed, 0);
             isComingBackHook = true;
+            hasLauchHook = false;
         }
 
         //Got Emoji
@@ -92,6 +85,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
         {
             rb.velocity = new Vector2(-hookSpeed, 0);
             isComingBackHook = true;
+            hasLauchHook = false;
         }
     }
 
@@ -129,6 +123,16 @@ public class T6_GrabSmiley2 : MonoBehaviour
             smileyObject.transform.position = transform.position;
         }
     }
+
+    public void EmojiThrow()
+    {
+        if (Input.GetAxis("Fire1") == 1 && canThrow)
+        {
+            smileyObject.GetComponent<Rigidbody2D>().velocity = new Vector3(emojiThrowSpeed, 0); // on envoie le smiley droit devant
+            smileyObject.GetComponent<T6_EmojiInteractions>().isBeingShot = true;
+            StartCoroutine(delay(timeDelay));
+        }
+    }
     IEnumerator delay(float t)
     {
         yield return new WaitForSeconds(t);
@@ -140,7 +144,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == smileyTagName)
+        if(collision.gameObject.tag == smileyTagName && hasLauchHook)
         {
             smileyObject = collision.gameObject;
             smileyObject.transform.SetParent(transform);
