@@ -39,16 +39,14 @@ public class T6_EmojiControler : MonoBehaviour
         globalSpeed = emojiSpawner.GetComponent<T6_EmojiSpawner>().GetWave().GetGlobalSpeed();
 
         emojiTransform = GetComponent<Transform>();
-        //speed = Random.Range(1.5f , 2.5f) * Time.deltaTime;
+
         randomSpeed = Random.Range(minSpeed, maxSpeed) * globalSpeed * Time.deltaTime;
 
-        //Debug.Log(randomSpeed);
 
     }
 
     private void Update()
     {
-        //emojiTransform.Translate(-speed, 0, 0);
         emojiTransform.Translate(-randomSpeed, 0, 0);
     }
 
@@ -56,7 +54,6 @@ public class T6_EmojiControler : MonoBehaviour
     {
         this.GetComponent<SpriteRenderer>().enabled = false;
         Instantiate(particles, this.gameObject.transform);
-        //speed = 0;
         randomSpeed = 0;
         this.GetComponent<Collider2D>().enabled = false;
         Destroy(this.gameObject, .5f);

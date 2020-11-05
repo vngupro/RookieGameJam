@@ -122,6 +122,7 @@ public class T6_HealthSystem : MonoBehaviour
 
     public void LifeAdd(LifeEventData data)
     {
+        
         progressBar.timer += data.lifeValue;
 
         if(progressBar.timer > progressBar.maxTimer)
@@ -129,6 +130,10 @@ public class T6_HealthSystem : MonoBehaviour
             progressBar.timer = progressBar.maxTimer;
         }
         isLifeAdding = true;
+        if (progressBar.timer > progressBar.maxTimer)
+        {
+            progressBar.timer = progressBar.maxTimer;
+        }
 
         if (activeScreenAnim)
         {

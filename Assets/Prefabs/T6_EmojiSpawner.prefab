@@ -870,6 +870,7 @@ GameObject:
   - component: {fileID: 5955099657712493364}
   - component: {fileID: -6598673638283647039}
   - component: {fileID: 4037723561977667320}
+  - component: {fileID: 8918615164512405492}
   m_Layer: 0
   m_Name: T6_EmojiSpawner
   m_TagString: Untagged
@@ -926,8 +927,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5eaedddf214a187469eb553ac0ed85cd, type: 2}
   - {fileID: 11400000, guid: 5eaedddf214a187469eb553ac0ed85cd, type: 2}
   timeBetweenEmojiSpawn: 1
+  stopSpawnTime: 5
   gameOverScreen: {fileID: 0}
   smileyStrengths: {fileID: 11400000, guid: 9578fe3774d763c4b9656b1db1139844, type: 2}
+  batterieBonus: {fileID: 0}
 --- !u!114 &-6598673638283647039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,7 +950,7 @@ MonoBehaviour:
   leftImage: {fileID: 5730721918021537931}
   angry: {fileID: 21300000, guid: a5f85d6b96a3b8048a0b22d3a735ab7b, type: 3}
   sad: {fileID: 21300000, guid: 1884c59c98466c94db65d24b4c3cafd3, type: 3}
-  fear: {fileID: 21300000, guid: dcede48fc1f4fe84aa6bd1cedd2081b8, type: 3}
+  fear: {fileID: 21300000, guid: 9ba440d1a743822469cf63fb949535bf, type: 3}
 --- !u!95 &4037723561977667320
 Animator:
   serializedVersion: 3
@@ -967,6 +970,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8918615164512405492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5955099657712493365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d25cb92ee9b8c0c4799b8fa85b7ee490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5955099657732232863
 GameObject:
   m_ObjectHideFlags: 0

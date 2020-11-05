@@ -86,7 +86,12 @@ public class T6_EmojiSpawner : MonoBehaviour
 
     private void SpawnEmoji()
     {
-        emoji = Random.Range(0, EmojiList.Count);
+        int lastEmoji = emoji;
+        do
+        {
+            emoji = Random.Range(0, EmojiList.Count);
+        } while (emoji == lastEmoji);
+        
         do
         {
             line = Random.Range(0, 5);
@@ -177,8 +182,6 @@ public class T6_EmojiSpawner : MonoBehaviour
     public void SpawnBatterieBonus(MilestoneTimerData data)
     {
         StartCoroutine(SpawnBatterieDelay());
-
-       
     }
 
     IEnumerator SpawnBatterieDelay()
