@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emojiType: 0
   isBeingShot: 0
-  particles: {fileID: 4416443951886644732, guid: d3bc86029d6e98e4e93dbc2d9023c214, type: 3}
+  particles: {fileID: 8807933133774824076, guid: c9e6e5fa51adde243a8b52f1b149387b, type: 3}
   point: 1
   strength: 
 --- !u!58 &138282036220347332
