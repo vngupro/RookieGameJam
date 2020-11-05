@@ -147,6 +147,11 @@ public class T6_GrabSmiley2 : MonoBehaviour
 
     public void ResetHookParameters(MilestoneTimerData data)
     {
+        StartCoroutine(MilestoneDelay());
+    }
+    IEnumerator MilestoneDelay()
+    {
+        yield return new WaitForSeconds(2);
         canLaunch = true;
         hasLauchHook = false;
         canThrow = false;
@@ -171,10 +176,13 @@ public class T6_GrabSmiley2 : MonoBehaviour
     {
         if(collision.gameObject.tag == smileyTagName && hasLauchHook)
         {
-            smileyObject = collision.gameObject;
-            smileyObject.transform.SetParent(transform);
-            hasEmoji = true;
-            collision.isTrigger = true;
+            if (!collision.GetComponent<T6_EmojiInteractions>().isBeingShot) //-------------------------
+            {
+                smileyObject = collision.gameObject;
+                smileyObject.transform.SetParent(transform);
+                hasEmoji = true;
+                collision.isTrigger = true;
+            }
         }
     }
 

@@ -177,8 +177,6 @@ public class T6_EmojiSpawner : MonoBehaviour
     public void SpawnBatterieBonus(MilestoneTimerData data)
     {
         StartCoroutine(SpawnBatterieDelay());
-
-       
     }
 
     IEnumerator SpawnBatterieDelay()

@@ -126,7 +126,7 @@ public class T6_StrengthChanger : MonoBehaviour
 
     IEnumerator MilestoneWait()
     {
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSeconds(2);
         ChangeAnimation();
     }
 }
