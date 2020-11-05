@@ -27,6 +27,9 @@ public class T6_ProgresBar : MonoBehaviour
         if (!gameIsOver)
         {
             timer -= Time.deltaTime;
+        }else if (gameIsOver && timer < maxTimer)
+        {
+            timer += Time.deltaTime * 2;
         }
 
         if (!timerIsUpdating)
@@ -53,7 +56,4 @@ public class T6_ProgresBar : MonoBehaviour
         yield return new WaitForSecondsRealtime(updateTime);
         timerIsUpdating = false;
     }
-
-
-
 }
