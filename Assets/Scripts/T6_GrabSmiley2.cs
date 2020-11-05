@@ -55,6 +55,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
         {
             canThrow = false;
         }
+
     }
     public void HookBehaviour()
     {
@@ -89,6 +90,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
             rb.velocity = new Vector2(-hookSpeed, 0);
             isComingBackHook = true;
             hasLauchHook = false;
+            
         }
     }
 
@@ -132,12 +134,13 @@ public class T6_GrabSmiley2 : MonoBehaviour
 
     public void EmojiThrow()
     {
-        if (Input.GetAxis("Fire1") == 1 && canThrow)
+        if (Input.GetAxis("Fire1") == 1 && canThrow && smileyObject != null)
         {
             smileyObject.GetComponent<Rigidbody2D>().velocity = new Vector3(emojiThrowSpeed, 0); // on envoie le smiley droit devant
             smileyObject.GetComponent<T6_EmojiInteractions>().isBeingShot = true;
             StartCoroutine(delay(timeDelay));
             smileyObject.GetComponent<Collider2D>().isTrigger = false;
+            T6_EmojiEvent.hitEmojiEvent.Invoke();
 
         }
     }

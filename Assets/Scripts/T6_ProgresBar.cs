@@ -16,10 +16,6 @@ public class T6_ProgresBar : MonoBehaviour
     [SerializeField] private Color green;
     public bool gameIsOver = false;
 
-    //private void Awake()
-    //{
-    //    T6_HealthEvent.deathZoneHit.AddListener(healthManager.DeathZoneHit);
-    //}
     private void Start()
     {
         maxTimer = timer;
@@ -57,4 +53,7 @@ public class T6_ProgresBar : MonoBehaviour
         yield return new WaitForSecondsRealtime(updateTime);
         timerIsUpdating = false;
     }
+
+
+
 }

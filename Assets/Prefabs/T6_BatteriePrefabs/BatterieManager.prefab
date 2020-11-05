@@ -117,10 +117,13 @@ MonoBehaviour:
   maxTimer: 0
   updateTime: 0.5
   fillImage: {fileID: 5757978531836462216}
+  hitFillImage: {fileID: 0}
   orange: {r: 1, g: 0.6331736, b: 0.0990566, a: 1}
   red: {r: 1, g: 0, b: 0, a: 1}
   green: {r: 0, g: 0.9607844, b: 0.1254902, a: 1}
+  redHit: {r: 0, g: 0, b: 0, a: 0}
   gameIsOver: 0
+  waitHitFill: 2
 --- !u!114 &5757978530932342765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +138,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 0}
   damageValue: 2
+  textBatterieValue: {fileID: 0}
+  timeShowBValue: 1
+  speedShowBValue: 0.5
+  redScreen: {fileID: 0}
+  greenScreen: {fileID: 0}
+  screenTransparency: 0.5
+  activeScreenAnim: 1
   kill: 0
 --- !u!1 &5757978531440482513
 GameObject:

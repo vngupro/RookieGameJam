@@ -67,12 +67,12 @@ public class T6_EmojiControler : MonoBehaviour
         if(gameObject != null)
         {
             StartCoroutine(WaitBeforeDestroyAll());
-
         }
     }
 
     IEnumerator WaitBeforeDestroyAll()
     {
+        T6_EmojiEvent.hitEmojiEvent.Invoke();
         yield return new WaitForSeconds(2.0f);
         DestroyEmoji();
     }

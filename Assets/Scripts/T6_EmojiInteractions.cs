@@ -25,6 +25,7 @@ public class T6_EmojiInteractions : MonoBehaviour
                 Destroy(this.gameObject, .5f);
                 SpawnParticles();
                 T6_ScoreEvent.hitWeakEmoji.Invoke(new HitScoreEventData(collision.gameObject, gameObject, point));
+                T6_EmojiEvent.hitEmojiEvent.Invoke();
             }
             else
             {
