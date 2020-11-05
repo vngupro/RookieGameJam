@@ -8643,7 +8643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5955099657712493364, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
       propertyPath: timeBetweenEmojiSpawn
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5955099657712493364, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
       propertyPath: batterieBonus
