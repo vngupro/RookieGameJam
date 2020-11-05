@@ -8373,7 +8373,7 @@ PrefabInstance:
       objectReference: {fileID: 1251473787}
     - target: {fileID: 5757978530932342765, guid: 6cee2f8edea62674495e2b3a3c02e8fa, type: 3}
       propertyPath: timeShowBValue
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5757978530932342765, guid: 6cee2f8edea62674495e2b3a3c02e8fa, type: 3}
       propertyPath: greenScreen

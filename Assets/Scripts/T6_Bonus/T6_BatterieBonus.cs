@@ -14,7 +14,13 @@ public class T6_BatterieBonus : MonoBehaviour
 
     [SerializeField] float batterieSpeed = 0.1f;
 
+    [SerializeField] private ParticleSystem particles;
     [SerializeField] private AudioSource audio;
+
+    private void Awake()
+    {
+        T6_HealthEvent.lifeUp.AddListener(DestroyBatterie);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +46,10 @@ public class T6_BatterieBonus : MonoBehaviour
         transform.Translate(-batterieSpeed, 0, 0);
     }
 
+    public void DestroyBatterie(LifeEventData data)
+    {
+        Destroy(gameObject);
+    }
     public float GetBatterieBonusValue()
     {
         return value;
