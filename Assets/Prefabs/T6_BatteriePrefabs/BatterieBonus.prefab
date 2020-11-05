@@ -145,10 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beaa63e552a12864c827043c82b29a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value1: 10
-  value2: 30
-  value3: 50
-  value4: 100
+  value1: 9
+  value2: 12
+  value3: 15
+  value4: 18
   batterieSpeed: 0.05
   audio: {fileID: -8020006972367606323}
 --- !u!82 &-8020006972367606323
