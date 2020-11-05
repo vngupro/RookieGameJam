@@ -35,6 +35,10 @@ PrefabInstance:
       propertyPath: emojiType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3432451852259687958, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 8807933133774824076, guid: c9e6e5fa51adde243a8b52f1b149387b, type: 3}
     - target: {fileID: 8301695065577990274, guid: 0b4260fff68cdf9418dd062844ab41b4, type: 3}
       propertyPath: m_Sprite
       value: 

@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd79d22814b5f24ebfc2539b1617466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 30
+  timer: 120
   milestone: 3
   progressBar: {fileID: 1797609276}
   emojiSpawner: {fileID: 1127662163}
@@ -7766,7 +7766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5955099657712493364, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
       propertyPath: timeBetweenEmojiSpawn
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5955099657712493364, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
       propertyPath: batterieBonus
