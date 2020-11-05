@@ -12,6 +12,7 @@ public class T6_BonusManager : MonoBehaviour
     private bool QTESuccess;
 
     private float rng;
+    private bool hasBonus;
     private void Awake()
     {
         T6_BonusEvent.scoreChange.AddListener(ScoreGacha);
@@ -24,37 +25,53 @@ public class T6_BonusManager : MonoBehaviour
 
     private void ScoreGacha(BonusEventData data)
     {
-        GetBonus(data.value);
+        if (!hasBonus)
+        {
+            GetBonus(data.value);
+        }
+        
         Debug.Log("SCORE RNG = " + rng);
     }
 
     private void ComboCountGacha(BonusEventData data)
     {
-        GetBonus(data.value);
+        if (!hasBonus)
+        {
+            GetBonus(data.value);
+        }
         Debug.Log("Combo RNG = " + rng);
     }
 
     private void BatterieLeftGacha(BonusEventData data)
     {
-        GetBonus(data.value);
+        if (!hasBonus)
+        {
+            GetBonus(data.value);
+        }
         Debug.Log("Batterie RNG = " + rng);
     }
 
     private void TimeLeftGacha(BonusEventData data)
     {
-        GetBonus(data.value);
+        if (!hasBonus)
+        {
+            GetBonus(data.value);
+        }
         Debug.Log("Time RNG = " + rng);
     }
 
     private void DamageCountGacha(BonusEventData data)
     {
-        GetBonus(data.value);
+        if (!hasBonus)
+        {
+            GetBonus(data.value);
+        }
         Debug.Log("Damage RNG = " + rng);
     }
 
     private void QTESuccessGacha()
     {
-        rng = Random.Range(0, 100);
+        rng = Random.Range(0, 200);
 
         if(rng < 10)
         {
@@ -70,8 +87,7 @@ public class T6_BonusManager : MonoBehaviour
 
     private void GetBonus(float value)
     {
-        rng = Random.Range(0, value);
-
+        rng = Random.Range(0, 50);
 
         if (rng < value / 4)
         {
@@ -85,5 +101,7 @@ public class T6_BonusManager : MonoBehaviour
         {
             Debug.Log("Get One Line Hit Bonus");
         }
+
+        hasBonus = true;
     }
 }

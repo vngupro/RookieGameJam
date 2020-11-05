@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class T6_ProgresBar : MonoBehaviour
@@ -49,13 +50,21 @@ public class T6_ProgresBar : MonoBehaviour
             fillImage.color = green;
         }
 
-        //Bonus Gacha
-        if ((int)timer % rngFactor == 5)
-        {
-            T6_BonusEvent.batterieLeftChange.Invoke(new BonusEventData(timer));
-        }
+
     }
 
+    private void FixedUpdate()
+    {
+        //Bonus Gacha
+        //if(timer < maxTimer / 4)
+        //{
+        //    T6_BonusEvent.batterieLeftChange.Invoke(new BonusEventData(timer));
+        //}
+        //else if (timer < maxTimer / 2)
+        //{
+        //    T6_BonusEvent.batterieLeftChange.Invoke(new BonusEventData(timer));
+        //}
+    }
     IEnumerator UpdateTimerAfterSec()
     {
         yield return new WaitForSecondsRealtime(updateTime);
