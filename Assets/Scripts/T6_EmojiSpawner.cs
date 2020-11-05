@@ -152,12 +152,8 @@ private void Awake()
             do
             {
                 line = Random.Range(0, LineList.Count);
-                Debug.Log("A Current Line = " + line);
             } while ((line == lastLine) || (line == lastLine2));
-            Debug.Log("EmojiCount = " + spawnEmojiCount);
-            Debug.Log("I Current Line = " + line);
-            Debug.Log("I Last Line 1 = " + lastLine);
-            Debug.Log("I Last Line 2 = " + lastLine2);
+
             if (spawnEmojiCount % 2 == 0)
             {
                 lastLine2 = line;
@@ -167,9 +163,6 @@ private void Awake()
                 lastLine = line;
             }
         }
-        Debug.Log("Current Line = " + line);
-        Debug.Log("Last Line 1 = " + lastLine);
-        Debug.Log("Last Line 2 = " + lastLine2);
     }
 
     public T6_WaveConfig GetWave()
