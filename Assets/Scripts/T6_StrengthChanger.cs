@@ -17,6 +17,9 @@ public class T6_StrengthChanger : MonoBehaviour
     [SerializeField] private Sprite sad;
     [SerializeField] private Sprite fear;
 
+    [SerializeField] private AudioSource myaudio;
+    [SerializeField] private AudioSource passagePietionSon;
+
     EmojiType emoji;
 
     private void Awake()
@@ -128,5 +131,7 @@ public class T6_StrengthChanger : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         ChangeAnimation();
+        myaudio.Play();
+        passagePietionSon.Play();
     }
 }

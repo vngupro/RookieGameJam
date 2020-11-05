@@ -26,6 +26,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
     GameObject smileyObject;
     Rigidbody2D rb;
     Collider2D hookCollider;
+    [SerializeField] private AudioSource audio; 
 
 
     #region Awake and Start
@@ -68,6 +69,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
     {
         if (Input.GetAxis("Fire1") == 1 && canLaunch && canThrow == false && hasEmoji == false)
         {
+            audio.Play();
             rb.velocity = new Vector2(hookSpeed, 0);
             canLaunch = false;
             hasLauchHook = true;
