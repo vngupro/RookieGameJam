@@ -122,6 +122,7 @@ MonoBehaviour:
   particles: {fileID: 1345211996041395707, guid: 0f125de6008a08a46b94f6d4f8fee33b, type: 3}
   emojiSpawner: {fileID: 5955099657712493365, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
   randomSpeed: 0
+  destroyEmoji: Explosion
 --- !u!114 &3432451852259687958
 MonoBehaviour:
   m_ObjectHideFlags: 0

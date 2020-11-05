@@ -39,6 +39,7 @@ public class T6_HealthSystem : MonoBehaviour
     private int damageCount = 0;
     [Header("Sound Name")]
     [SerializeField]private string batterieUp;
+    [SerializeField] T6_GameManager gameManager;
     private void Awake()
     {
         progressBar = GetComponent<T6_ProgresBar>();
@@ -121,6 +122,8 @@ public class T6_HealthSystem : MonoBehaviour
     public void DeathTrigger()
     {
         gameOverScreen.SetActive(true);
+        gameManager.PauseGame();
+
     }
 
     public void LifeAdd(LifeEventData data)

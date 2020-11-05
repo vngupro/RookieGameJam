@@ -20,15 +20,29 @@ public class T6_Victory : MonoBehaviour
     public GameObject grapin;
     public GameObject endAnim;
 
+    public GameObject VictoryScreen;
+    public float timeBeforeDisplayVictory = 5.0f;
+
+    T6_GameManager pauseScript;
     [SerializeField] int rngFactor = 5;
+    [Header("Debug")]
+    [SerializeField] private bool victory = false;
 
     private void Awake()
     {
         maxTime = timer;
+        pauseScript = GetComponent<T6_GameManager>();
+        victory = false;
     }
 
     private void Update()
     {
+        if (victory)
+        {
+            Victory();
+            T6_TimerEvent.victoryTimer.Invoke(new VictoryTimerData(timer));
+
+        }
         if (!gameIsOver)
             timer -= Time.deltaTime;
 
@@ -65,5 +79,16 @@ public class T6_Victory : MonoBehaviour
         grabSmiley.enabled = false;
         animator.SetTrigger("Victory");
         grapin.SetActive(false);
+        StartCoroutine(DisplayVictoryScreen());
+    }
+
+    IEnumerator DisplayVictoryScreen()
+    {
+        yield return new WaitForSeconds(timeBeforeDisplayVictory);
+       
+        VictoryScreen.SetActive(true);
+        pauseScript.PauseGame();
+
+
     }
 }

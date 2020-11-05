@@ -17,7 +17,7 @@ public class T6_BackgroundManager : MonoBehaviour
         T6_TimerEvent.milestoneTimer.AddListener(SpawnMilestone);
 
         length = backgroundList[0].GetComponent<SpriteRenderer>().bounds.size.x;
-        for (int i = 1; i < backgroundList.Count; i++)
+        for (int i = 1; i < backgroundList.Count - 1; i++)
         {
             backgroundList[i].position = new Vector3((backgroundList[0].position.x + length) * i, backgroundList[0].position.y, backgroundList[0].position.z);
         }
@@ -37,7 +37,7 @@ public class T6_BackgroundManager : MonoBehaviour
 
     public void SpawnLastSprite(VictoryTimerData data)
     {
-        backgroundList[backgroundList.Count - 1].gameObject.SetActive(true);
+        backgroundList[backgroundList.Count-1].gameObject.SetActive(true);
         endGame = true; 
     }
 

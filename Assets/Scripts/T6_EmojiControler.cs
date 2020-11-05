@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class T6_EmojiControler : MonoBehaviour
@@ -13,15 +14,20 @@ public class T6_EmojiControler : MonoBehaviour
     private float maxSpeed;
     private float globalSpeed;
     public float randomSpeed;
+    [Header("Sound Name")]
+    [SerializeField]private string destroyEmoji;
+    
     //[SerializeField] float factorSpeed = 0.1f;
 
     EmojiType type;
     List<T6_EmojiClass> emojiList;
 
+    private bool pause = false;
     private void Awake()
     {
         T6_TimerEvent.milestoneTimer.AddListener(DestroyAllSpawnEmoji);
         T6_TimerEvent.victoryTimer.AddListener(DestroyAllSpawnEmojiVictory);
+        pause = false;
     }
     private void Start()
     {
@@ -41,16 +47,24 @@ public class T6_EmojiControler : MonoBehaviour
 
         emojiTransform = GetComponent<Transform>();
 
-        randomSpeed = Random.Range(minSpeed, maxSpeed) * globalSpeed * Time.deltaTime;
+        randomSpeed = Random.Range(minSpeed, maxSpeed) * globalSpeed;
 
 
     }
 
     private void Update()
     {
-        emojiTransform.Translate(-randomSpeed, 0, 0);
+        if (!pause)
+        {
+            emojiTransform.Translate(-randomSpeed * Time.deltaTime, 0, 0);
+        }
+        
     }
 
+    public void StopEmojiOnPause()
+    {
+        
+    }
     public void DestroyEmoji()
     {
         this.GetComponent<SpriteRenderer>().enabled = false;
@@ -58,6 +72,7 @@ public class T6_EmojiControler : MonoBehaviour
         randomSpeed = 0;
         this.GetComponent<Collider2D>().enabled = false;
         Destroy(this.gameObject, .5f);
+        //T6_SoundEvent.playSound.Invoke(new SoundEventData(destroyEmoji));
     }
 
     public void DestroyAllSpawnEmoji(MilestoneTimerData data)
@@ -80,6 +95,7 @@ public class T6_EmojiControler : MonoBehaviour
     {
         T6_EmojiEvent.hitEmojiEvent.Invoke();
         yield return new WaitForSeconds(2.0f);
+        
         DestroyEmoji();
     }
 
