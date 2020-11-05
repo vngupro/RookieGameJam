@@ -33,10 +33,12 @@ public class T6_GrabSmiley2 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         hookCollider = GetComponent<Collider2D>();
+
         canLaunch = true;
         hasLauchHook = false;
         canThrow = false;
         hasEmoji = false;
+        T6_TimerEvent.milestoneTimer.AddListener(ResetHookParameters);
     }
     #endregion
     void Update()
@@ -53,6 +55,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
         {
             canThrow = false;
         }
+
     }
     public void HookBehaviour()
     {
@@ -87,6 +90,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
             rb.velocity = new Vector2(-hookSpeed, 0);
             isComingBackHook = true;
             hasLauchHook = false;
+            
         }
     }
 
@@ -123,20 +127,31 @@ public class T6_GrabSmiley2 : MonoBehaviour
         //s'arrête avec le smiley quand il est arrivé, replacement du grab
         else
         {
-            smileyObject.transform.position = transform.position;
+            if(smileyObject != null)
+                smileyObject.transform.position = transform.position;
         }
     }
 
     public void EmojiThrow()
     {
-        if (Input.GetAxis("Fire1") == 1 && canThrow)
+        if (Input.GetAxis("Fire1") == 1 && canThrow && smileyObject != null)
         {
             smileyObject.GetComponent<Rigidbody2D>().velocity = new Vector3(emojiThrowSpeed, 0); // on envoie le smiley droit devant
             smileyObject.GetComponent<T6_EmojiInteractions>().isBeingShot = true;
             StartCoroutine(delay(timeDelay));
             smileyObject.GetComponent<Collider2D>().isTrigger = false;
+            T6_EmojiEvent.hitEmojiEvent.Invoke();
 
         }
+    }
+
+    public void ResetHookParameters(MilestoneTimerData data)
+    {
+        canLaunch = true;
+        hasLauchHook = false;
+        canThrow = false;
+        hasEmoji = false;
+
     }
     IEnumerator delay(float t)
     {

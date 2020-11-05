@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5757978530932342758}
   - component: {fileID: 5757978530932342765}
   m_Layer: 5
-  m_Name: BatterieSystem
+  m_Name: BatterieManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,9 +117,13 @@ MonoBehaviour:
   maxTimer: 0
   updateTime: 0.5
   fillImage: {fileID: 5757978531836462216}
+  hitFillImage: {fileID: 0}
   orange: {r: 1, g: 0.6331736, b: 0.0990566, a: 1}
   red: {r: 1, g: 0, b: 0, a: 1}
   green: {r: 0, g: 0.9607844, b: 0.1254902, a: 1}
+  redHit: {r: 0, g: 0, b: 0, a: 0}
+  gameIsOver: 0
+  waitHitFill: 2
 --- !u!114 &5757978530932342765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +138,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 0}
   damageValue: 2
+  textBatterieValue: {fileID: 0}
+  timeShowBValue: 1
+  speedShowBValue: 0.5
+  redScreen: {fileID: 0}
+  greenScreen: {fileID: 0}
+  screenTransparency: 0.5
+  activeScreenAnim: 1
   kill: 0
 --- !u!1 &5757978531440482513
 GameObject:
@@ -280,7 +291,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 91.075}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.0000009536743}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 30.594612, y: -2.4912567}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5757978531887042714

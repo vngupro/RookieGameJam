@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class T6_HealthSystem : MonoBehaviour
 {
@@ -16,7 +18,18 @@ public class T6_HealthSystem : MonoBehaviour
 
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] float damageValue = 1.0f;
+    bool hasTakeDamage = false;
 
+    [SerializeField] TMP_Text textBatterieValue;
+    Vector3 originalTextBatteriePos;
+    [SerializeField] float timeShowBValue = 1.0f;
+    private bool isLifeAdding = false;
+    [SerializeField] float speedShowBValue = 0.5f;
+
+    [SerializeField] Image redScreen;
+    [SerializeField] Image greenScreen;
+    [SerializeField] float screenTransparency = 0.5f;
+    [SerializeField] bool activeScreenAnim = true;
     [Header("Debug")]
     [SerializeField] bool kill = false;
     T6_ProgresBar progressBar;
@@ -32,7 +45,12 @@ public class T6_HealthSystem : MonoBehaviour
         //    lifeList.Add(life);
         //}
 
+        originalTextBatteriePos = textBatterieValue.transform.position;
+        textBatterieValue.text = "";
+        isLifeAdding = false;
+        hasTakeDamage = false;
         T6_HealthEvent.deathZoneHit.AddListener(DeathZoneHit);
+        T6_HealthEvent.lifeUp.AddListener(LifeAdd);
     }
 
     private void Update()
@@ -40,6 +58,24 @@ public class T6_HealthSystem : MonoBehaviour
         if (kill)
         {
             DebugKill();
+        }
+
+        if (isLifeAdding)
+        {
+            textBatterieValue.transform.Translate(Vector3.up * speedShowBValue);
+            if (activeScreenAnim)
+            {
+                GreenScreenFade();
+            }
+
+        }
+
+        if (hasTakeDamage)
+        {
+            if (activeScreenAnim)
+            {
+                RedScreenFade();
+            }
         }
     }
     public void DeathZoneHit(HitEventData data)
@@ -59,22 +95,77 @@ public class T6_HealthSystem : MonoBehaviour
     {
 
         //lifeList[currentLife - 1].SetActive(false);
-        progressBar.timer -= damageValue;  
-        
+        progressBar.timer -= damageValue;
+
+        if (activeScreenAnim)
+        {
+            RedScreenAnim();
+        }
+
     }
 
     public void DeathTrigger()
     {
-        Debug.Log("Game Over");
         gameOverScreen.SetActive(true);
     }
 
-    public void LifeUp(int value)
+    public void LifeAdd(LifeEventData data)
     {
-        Debug.Log("Life Up");
-        progressBar.timer += value;
+        progressBar.timer += data.lifeValue;
+        isLifeAdding = true;
+
+        if (activeScreenAnim)
+        {
+            GreenScreenAnim();
+        }
+
+
+        StartCoroutine(ShowBatterieValue(data.lifeValue));
+
+
     }
 
+    public void RedScreenAnim()
+    {
+        var tempColor = redScreen.color;
+        tempColor.a = screenTransparency;
+        redScreen.color = tempColor;
+        hasTakeDamage = true;
+    }
+
+    public void GreenScreenAnim()
+    {
+        var tempColor = greenScreen.color;
+        tempColor.a = screenTransparency;
+        greenScreen.color = tempColor;
+    }
+
+    public void RedScreenFade()
+    {
+        var tempColor = redScreen.color;
+        tempColor.a -= screenTransparency / 60;
+        redScreen.color = tempColor;
+        if (tempColor.a == 0)
+        {
+            hasTakeDamage = false;
+        }
+    }
+
+    public void GreenScreenFade()
+    {
+        var tempColor = greenScreen.color;
+        tempColor.a -= screenTransparency / 60;
+        greenScreen.color = tempColor;
+    }
+    IEnumerator ShowBatterieValue(float value)
+    {
+        
+        textBatterieValue.text = "+" + value.ToString();
+        yield return new WaitForSeconds(timeShowBValue);
+        textBatterieValue.text = "";
+        textBatterieValue.transform.position = originalTextBatteriePos;
+        isLifeAdding = false;
+    }
     //public void MaxLifeUp(int maxLifeAdd)
     //{
     //    maxLife += maxLifeAdd;

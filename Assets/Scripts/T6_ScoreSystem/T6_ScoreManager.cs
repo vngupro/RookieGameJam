@@ -27,7 +27,6 @@ public class T6_ScoreManager : MonoBehaviour
 
     public void HitWeakEmoji(HitScoreEventData data)
     {
-        Debug.Log("Good Hit !!! Score++");
         score++;
         text.text = score.ToString();
     }
