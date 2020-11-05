@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
+using TMPro;
 
 public class T6_HealthSystem : MonoBehaviour
 {
@@ -16,6 +17,12 @@ public class T6_HealthSystem : MonoBehaviour
 
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] float damageValue = 1.0f;
+
+    [SerializeField] TMP_Text textBatterieValue;
+    Vector3 originalTextBatteriePos;
+    [SerializeField] float timeShowBValue = 1.0f;
+    private bool isLifeAdding = false;
+    [SerializeField] float speedShowBValue = 0.5f;
 
     [Header("Debug")]
     [SerializeField] bool kill = false;
@@ -32,7 +39,11 @@ public class T6_HealthSystem : MonoBehaviour
         //    lifeList.Add(life);
         //}
 
+        originalTextBatteriePos = textBatterieValue.transform.position;
+        textBatterieValue.text = "";
+        isLifeAdding = false;
         T6_HealthEvent.deathZoneHit.AddListener(DeathZoneHit);
+        T6_HealthEvent.lifeUp.AddListener(LifeAdd);
     }
 
     private void Update()
@@ -40,6 +51,11 @@ public class T6_HealthSystem : MonoBehaviour
         if (kill)
         {
             DebugKill();
+        }
+
+        if (isLifeAdding)
+        {
+            textBatterieValue.transform.Translate(Vector3.up * speedShowBValue);
         }
     }
     public void DeathZoneHit(HitEventData data)
@@ -65,16 +81,28 @@ public class T6_HealthSystem : MonoBehaviour
 
     public void DeathTrigger()
     {
-        Debug.Log("Game Over");
         gameOverScreen.SetActive(true);
     }
 
-    public void LifeUp(int value)
+    public void LifeAdd(LifeEventData data)
     {
-        Debug.Log("Life Up");
-        progressBar.timer += value;
+        progressBar.timer += data.lifeValue;
+        isLifeAdding = true;
+        StartCoroutine(ShowBatterieValue(data.lifeValue));
+
+
     }
 
+
+    IEnumerator ShowBatterieValue(float value)
+    {
+        
+        textBatterieValue.text = "+" + value.ToString();
+        yield return new WaitForSeconds(timeShowBValue);
+        textBatterieValue.text = "";
+        textBatterieValue.transform.position = originalTextBatteriePos;
+        isLifeAdding = false;
+    }
     //public void MaxLifeUp(int maxLifeAdd)
     //{
     //    maxLife += maxLifeAdd;

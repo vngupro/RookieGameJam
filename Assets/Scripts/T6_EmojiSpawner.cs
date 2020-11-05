@@ -27,7 +27,7 @@ public class T6_EmojiSpawner : MonoBehaviour
     private int currentWave = 0;
 
     [SerializeField] float timeBetweenEmojiSpawn = 1.0f;
-    [SerializeField] float delaySpawnAtMilestone = 5.0f;
+    [SerializeField] float stopSpawnTime = 5.0f;
     private float timer = 1.0f;
     private bool isSpawning = false;
     private bool canSpawn = true;
@@ -39,6 +39,8 @@ public class T6_EmojiSpawner : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
 
     public T6_SmileyStrengths smileyStrengths;
+
+    [SerializeField] GameObject batterieBonus;
 
     private void Awake()
     {
@@ -54,6 +56,7 @@ public class T6_EmojiSpawner : MonoBehaviour
         GetWaveParameters();
         canSpawn = true;
         T6_TimerEvent.milestoneTimer.AddListener(StopSpawning);
+        T6_TimerEvent.milestoneTimer.AddListener(SpawnBatterieBonus);
 
     }
 
@@ -167,7 +170,23 @@ public class T6_EmojiSpawner : MonoBehaviour
     IEnumerator SpawnDelay()
     {
         canSpawn = false;
-        yield return new WaitForSecondsRealtime(delaySpawnAtMilestone);
+        yield return new WaitForSecondsRealtime(stopSpawnTime);
         canSpawn = true;
+    }
+
+    public void SpawnBatterieBonus(MilestoneTimerData data)
+    {
+        StartCoroutine(SpawnBatterieDelay());
+
+       
+    }
+
+    IEnumerator SpawnBatterieDelay()
+    {
+        yield return new WaitForSeconds(stopSpawnTime / 2);
+        for (int i = 0; i < LineList.Count; i++)
+        {
+            obj = Instantiate(batterieBonus, lines[i].transform);
+        }
     }
 }

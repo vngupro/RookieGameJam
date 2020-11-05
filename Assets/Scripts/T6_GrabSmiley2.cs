@@ -33,10 +33,12 @@ public class T6_GrabSmiley2 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         hookCollider = GetComponent<Collider2D>();
+
         canLaunch = true;
         hasLauchHook = false;
         canThrow = false;
         hasEmoji = false;
+        T6_TimerEvent.milestoneTimer.AddListener(ResetHookParameters);
     }
     #endregion
     void Update()
@@ -138,6 +140,15 @@ public class T6_GrabSmiley2 : MonoBehaviour
             smileyObject.GetComponent<Collider2D>().isTrigger = false;
 
         }
+    }
+
+    public void ResetHookParameters(MilestoneTimerData data)
+    {
+        canLaunch = true;
+        hasLauchHook = false;
+        canThrow = false;
+        hasEmoji = false;
+
     }
     IEnumerator delay(float t)
     {
