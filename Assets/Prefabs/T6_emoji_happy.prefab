@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4a9c11477d34246ace427a4e7b3be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles: {fileID: 4416443951886644732, guid: d3bc86029d6e98e4e93dbc2d9023c214, type: 3}
+  particles: {fileID: 1345211996041395707, guid: 0f125de6008a08a46b94f6d4f8fee33b, type: 3}
   emojiSpawner: {fileID: 5955099657712493365, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
   randomSpeed: 0
 --- !u!114 &3432451852259687958
