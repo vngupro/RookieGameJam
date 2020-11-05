@@ -37,6 +37,8 @@ public class T6_HealthSystem : MonoBehaviour
 
     [SerializeField] int rngFactor = 5;
     private int damageCount = 0;
+    [Header("Sound Name")]
+    [SerializeField]private string batterieUp;
     private void Awake()
     {
         progressBar = GetComponent<T6_ProgresBar>();
@@ -125,8 +127,8 @@ public class T6_HealthSystem : MonoBehaviour
     {
         
         progressBar.timer += data.lifeValue;
-
-        if(progressBar.timer > progressBar.maxTimer)
+        T6_SoundEvent.playSound.Invoke(new SoundEventData(batterieUp));
+        if (progressBar.timer > progressBar.maxTimer)
         {
             progressBar.timer = progressBar.maxTimer;
         }

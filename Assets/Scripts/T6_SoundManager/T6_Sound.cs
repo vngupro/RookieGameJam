@@ -8,9 +8,10 @@ public class T6_Sound
 {
     public AudioClip clip;
 
+    public string name;
     [Range(0.0f, 1.0f)]
     public float volume;
-    [Range(0.1f, 0.3f)]
+    [Range(0.0f, 3.0f)]
     public float pitch;
 
     [HideInInspector]

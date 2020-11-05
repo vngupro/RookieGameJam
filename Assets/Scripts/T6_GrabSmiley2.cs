@@ -26,7 +26,16 @@ public class T6_GrabSmiley2 : MonoBehaviour
     GameObject smileyObject;
     Rigidbody2D rb;
     Collider2D hookCollider;
-    [SerializeField] private AudioSource audio; 
+    [SerializeField] private AudioSource audio;
+    [Header("Sound Name")]
+    [SerializeField] private string hookLaunch = "";
+    [SerializeField] private string hookGrab = "";
+    [SerializeField] private string hookBack = "";
+    [SerializeField] private string emojiThrow1 = "";
+    [SerializeField] private string emojiThrow2 = "";
+    [SerializeField] private string emojiThrow3 = "";
+    [SerializeField] private string emojiThrow4 = "";
+    private int soundCount = 1;
 
 
     #region Awake and Start
@@ -69,13 +78,20 @@ public class T6_GrabSmiley2 : MonoBehaviour
     {
         if (Input.GetAxis("Fire1") == 1 && canLaunch && canThrow == false && hasEmoji == false)
         {
-            audio.Play();
+            //audio.Play();
             rb.velocity = new Vector2(hookSpeed, 0);
             canLaunch = false;
             hasLauchHook = true;
+            T6_SoundEvent.playSound.Invoke(new SoundEventData(hookLaunch));
+            StartCoroutine(PlayHookBack());
         }
     }
-
+    IEnumerator PlayHookBack()
+    {
+        
+        yield return new WaitForSeconds(0.05f);
+        T6_SoundEvent.playSound.Invoke(new SoundEventData(hookBack));
+    }
     public void ComeBackHook()
     {
         //No Emoji
@@ -124,7 +140,11 @@ public class T6_GrabSmiley2 : MonoBehaviour
         //ramène le smiley au joueur
         if (transform.position.x > startPosition.position.x)
         {
-            smileyObject.transform.position = gameObject.transform.position;
+            if(smileyObject != null)
+            {
+                smileyObject.transform.position = gameObject.transform.position;
+            }
+            
         }
         //s'arrête avec le smiley quand il est arrivé, replacement du grab
         else
@@ -143,10 +163,47 @@ public class T6_GrabSmiley2 : MonoBehaviour
             StartCoroutine(delay(timeDelay));
             smileyObject.GetComponent<Collider2D>().isTrigger = false;
             //T6_EmojiEvent.hitEmojiEvent.Invoke();
+            
+            if(soundCount == 1)
+            {
+                T6_SoundEvent.playSound.Invoke(new SoundEventData(emojiThrow1));
+                StartCoroutine(ChangeSound());
+            }
+            else if(soundCount == 2)
+            {
+                T6_SoundEvent.playSound.Invoke(new SoundEventData(emojiThrow2));
+                StartCoroutine(ChangeSound());
+            }
+            else if(soundCount == 3)
+            {
+                T6_SoundEvent.playSound.Invoke(new SoundEventData(emojiThrow3));
+                StartCoroutine(ChangeSound());
+
+            }
+            else if(soundCount == 4)
+            {
+                T6_SoundEvent.playSound.Invoke(new SoundEventData(emojiThrow4));
+                StartCoroutine(ChangeSound());
+
+            }
+
 
         }
     }
 
+    IEnumerator ChangeSound()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if(soundCount == 4)
+        {
+            soundCount = 1;
+        }
+        else
+        {
+            soundCount++;
+        }
+       
+    }
     public void ResetHookParameters(MilestoneTimerData data)
     {
         StartCoroutine(MilestoneDelay());
@@ -180,17 +237,23 @@ public class T6_GrabSmiley2 : MonoBehaviour
         {
             if (!collision.GetComponent<T6_EmojiInteractions>().isBeingShot) //-------------------------
             {
+                T6_SoundEvent.playSound.Invoke(new SoundEventData(hookGrab));
                 smileyObject = collision.gameObject;
                 smileyObject.transform.SetParent(transform);
                 hasEmoji = true;
                 collision.isTrigger = true;
+                
             }
         }
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        collision.gameObject.transform.parent = null;
+        if(collision != null)
+        {
+            collision.gameObject.transform.parent = null;
+        }
+        
     }
 
 }
