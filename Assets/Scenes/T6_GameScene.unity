@@ -8397,7 +8397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5757978530932342765, guid: 6cee2f8edea62674495e2b3a3c02e8fa, type: 3}
       propertyPath: timeScreenFade
-      value: 10
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5757978531440482512, guid: 6cee2f8edea62674495e2b3a3c02e8fa, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -9648,7 +9648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148672769938090084, guid: 6f44db6b4fd8ea046b0f0c3ac3d8cfbd, type: 3}
       propertyPath: timeDelay
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3148672769938090084, guid: 6f44db6b4fd8ea046b0f0c3ac3d8cfbd, type: 3}
       propertyPath: hookSpeed

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using UnityEngine;
+using UnityEngine.Jobs;
 
 public class T6_EmojiSpawner : MonoBehaviour
 {
@@ -41,8 +42,12 @@ public class T6_EmojiSpawner : MonoBehaviour
     public T6_SmileyStrengths smileyStrengths;
 
     [SerializeField] GameObject batterieBonus;
+    private int spawnEmojiCount = 0;
+    private int[] lastLineList = new int[3];
+    private int lastLine = 0;
+    private int lastLine2 = 0;
 
-    private void Awake()
+private void Awake()
     {
         if(instance == null)
         {
@@ -55,8 +60,11 @@ public class T6_EmojiSpawner : MonoBehaviour
 
         GetWaveParameters();
         canSpawn = true;
+        
         T6_TimerEvent.milestoneTimer.AddListener(StopSpawning);
         T6_TimerEvent.milestoneTimer.AddListener(SpawnBatterieBonus);
+        spawnEmojiCount = 0;
+        lastLine = 0;
 
     }
 
@@ -91,11 +99,9 @@ public class T6_EmojiSpawner : MonoBehaviour
         {
             emoji = Random.Range(0, EmojiList.Count);
         } while (emoji == lastEmoji);
-        
-        do
-        {
-            line = Random.Range(0, 5);
-        } while (!LineList[line]);
+
+        GetLine();
+
 
         switch (emoji)
         {
@@ -122,6 +128,48 @@ public class T6_EmojiSpawner : MonoBehaviour
         }
         timer = timeBetweenEmojiSpawn;
         isSpawning = false;
+    }
+
+    public void GetLine()
+    {
+        spawnEmojiCount++;
+        if (spawnEmojiCount == 1)
+        {
+            line = Random.Range(0, LineList.Count);
+            lastLine = line;
+        }
+        else if (spawnEmojiCount == 2)
+        {
+            do
+            {
+                line = Random.Range(0, LineList.Count);
+            } while (line == lastLine);
+
+            lastLine2 = line;
+        }
+        else
+        {
+            do
+            {
+                line = Random.Range(0, LineList.Count);
+                Debug.Log("A Current Line = " + line);
+            } while ((line == lastLine) || (line == lastLine2));
+            Debug.Log("EmojiCount = " + spawnEmojiCount);
+            Debug.Log("I Current Line = " + line);
+            Debug.Log("I Last Line 1 = " + lastLine);
+            Debug.Log("I Last Line 2 = " + lastLine2);
+            if (spawnEmojiCount % 2 == 0)
+            {
+                lastLine2 = line;
+            }
+            else if (spawnEmojiCount%2 == 1)
+            {
+                lastLine = line;
+            }
+        }
+        Debug.Log("Current Line = " + line);
+        Debug.Log("Last Line 1 = " + lastLine);
+        Debug.Log("Last Line 2 = " + lastLine2);
     }
 
     public T6_WaveConfig GetWave()
