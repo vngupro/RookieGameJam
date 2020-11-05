@@ -16,6 +16,8 @@ public class T6_ProgresBar : MonoBehaviour
     [SerializeField] private Color green;
     public bool gameIsOver = false;
 
+    [SerializeField] int rngFactor = 5;
+
     private void Start()
     {
         maxTimer = timer;
@@ -45,6 +47,12 @@ public class T6_ProgresBar : MonoBehaviour
         }else if(slider.value > 0.5f)
         {
             fillImage.color = green;
+        }
+
+        //Bonus Gacha
+        if ((int)timer % rngFactor == 5)
+        {
+            T6_BonusEvent.batterieLeftChange.Invoke(new BonusEventData(timer));
         }
     }
 

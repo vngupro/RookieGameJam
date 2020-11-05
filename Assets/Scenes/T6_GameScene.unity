@@ -632,6 +632,7 @@ MonoBehaviour:
   animator: {fileID: 7913385993955164149}
   grapin: {fileID: 4609618295485902775}
   endAnim: {fileID: 7913385993955164148}
+  rngFactor: 25
 --- !u!4 &231450625
 Transform:
   m_ObjectHideFlags: 0
@@ -6469,6 +6470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 510073826}
   score: 0
+  rngFactor: 20
 --- !u!1 &1101356766
 GameObject:
   m_ObjectHideFlags: 0
@@ -7031,6 +7033,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1683128866}
+  - component: {fileID: 1683128867}
   m_Layer: 0
   m_Name: BonusManager
   m_TagString: Untagged
@@ -7052,6 +7055,18 @@ Transform:
   m_Father: {fileID: 1258215764}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1683128867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683128865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4cf0a0a729284cbee2caa0d0b4837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1704434997
 GameObject:
   m_ObjectHideFlags: 0
@@ -7380,6 +7395,10 @@ PrefabInstance:
       propertyPath: redHit.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5757978530932342758, guid: 6cee2f8edea62674495e2b3a3c02e8fa, type: 3}
+      propertyPath: rngFactor
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5757978530932342759, guid: 6cee2f8edea62674495e2b3a3c02e8fa, type: 3}
       propertyPath: m_Name
       value: BatterieManager
@@ -7415,6 +7434,10 @@ PrefabInstance:
     - target: {fileID: 5757978530932342765, guid: 6cee2f8edea62674495e2b3a3c02e8fa, type: 3}
       propertyPath: activeScreenAnim
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757978530932342765, guid: 6cee2f8edea62674495e2b3a3c02e8fa, type: 3}
+      propertyPath: rngFactor
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5757978531440482512, guid: 6cee2f8edea62674495e2b3a3c02e8fa, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -7952,6 +7975,7 @@ MonoBehaviour:
   combo4: 4
   combo5: 5
   comboTextTime: 1.5
+  rngFactor: 10
 --- !u!1 &1877808094
 GameObject:
   m_ObjectHideFlags: 0

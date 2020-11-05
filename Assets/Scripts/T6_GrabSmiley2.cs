@@ -140,7 +140,7 @@ public class T6_GrabSmiley2 : MonoBehaviour
             smileyObject.GetComponent<T6_EmojiInteractions>().isBeingShot = true;
             StartCoroutine(delay(timeDelay));
             smileyObject.GetComponent<Collider2D>().isTrigger = false;
-            T6_EmojiEvent.hitEmojiEvent.Invoke();
+            //T6_EmojiEvent.hitEmojiEvent.Invoke();
 
         }
     }

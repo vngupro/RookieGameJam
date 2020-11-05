@@ -10,6 +10,7 @@ public class T6_ScoreManager : MonoBehaviour
 
     [SerializeField] TMP_Text text;
     [SerializeField] int score = 0;
+    [SerializeField] int rngFactor = 5;
     private void Awake()
     {
         if (instance == null)
@@ -29,5 +30,11 @@ public class T6_ScoreManager : MonoBehaviour
     {
         score++;
         text.text = score.ToString();
+
+        //Bonus Gacha
+        if ( (score + 1) % rngFactor == 0)
+        {
+            T6_BonusEvent.scoreChange.Invoke(new BonusEventData(score));
+        }
     }
 }

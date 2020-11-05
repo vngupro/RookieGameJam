@@ -20,6 +20,8 @@ public class T6_Victory : MonoBehaviour
     public GameObject grapin;
     public GameObject endAnim;
 
+    [SerializeField] int rngFactor = 5;
+
     private void Awake()
     {
         maxTime = timer;
@@ -46,6 +48,13 @@ public class T6_Victory : MonoBehaviour
         {
             gameIsOver = true;
             Victory();
+        }
+
+        //Bonus Gacha
+        if(maxTime % timer == rngFactor)
+        {
+            T6_BonusEvent.timeLeftChange.Invoke(new BonusEventData(timer));
+            rngFactor -= 25;
         }
     }
 

@@ -33,6 +33,9 @@ public class T6_HealthSystem : MonoBehaviour
     [Header("Debug")]
     [SerializeField] bool kill = false;
     T6_ProgresBar progressBar;
+
+    [SerializeField] int rngFactor = 5;
+    private int damageCount = 0;
     private void Awake()
     {
         progressBar = GetComponent<T6_ProgresBar>();
@@ -96,12 +99,20 @@ public class T6_HealthSystem : MonoBehaviour
 
         //lifeList[currentLife - 1].SetActive(false);
         progressBar.timer -= damageValue;
-
+        damageCount++;
+        
+        //Screen Animation
         if (activeScreenAnim)
         {
             RedScreenAnim();
         }
 
+        //Bonus Gacha
+        if ( (damageCount + 1) % rngFactor == 0)
+        {
+            Debug.Log((damageCount + 1) % rngFactor);
+            T6_BonusEvent.damageCountChange.Invoke(new BonusEventData(damageCount));
+        }
     }
 
     public void DeathTrigger()

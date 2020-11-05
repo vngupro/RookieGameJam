@@ -19,6 +19,7 @@ public class T6_ComboManager : MonoBehaviour
     [SerializeField] int combo4 = 40;
     [SerializeField] int combo5 = 50;
     [SerializeField] float comboTextTime = 1.5f;
+    [SerializeField] int rngFactor = 5;
 
     private void Awake()
     {
@@ -61,6 +62,12 @@ public class T6_ComboManager : MonoBehaviour
         }
 
         StartCoroutine(ComboTextDisplay());
+
+        //Bonus Gacha
+        if( (comboCount + 1) % rngFactor == 0)
+        {
+            T6_BonusEvent.comboCountChange.Invoke(new BonusEventData(comboCount));
+        }
     }
 
     IEnumerator ComboTextDisplay()
