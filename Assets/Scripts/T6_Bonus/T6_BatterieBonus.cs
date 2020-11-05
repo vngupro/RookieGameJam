@@ -12,7 +12,9 @@ public class T6_BatterieBonus : MonoBehaviour
     [SerializeField] float value3 = 50.0f;
     [SerializeField] float value4 = 100.0f;
 
-    [SerializeField] float batterieSpeed = 0.1f; 
+    [SerializeField] float batterieSpeed = 0.1f;
+
+    [SerializeField] private AudioSource audio;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,7 @@ public class T6_BatterieBonus : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        audio.Play();
         if(collision.tag == "T6_EndLine")
         {
             Destroy(gameObject);

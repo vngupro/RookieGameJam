@@ -21,6 +21,7 @@ public class T6_EmojiControler : MonoBehaviour
     private void Awake()
     {
         T6_TimerEvent.milestoneTimer.AddListener(DestroyAllSpawnEmoji);
+        T6_TimerEvent.victoryTimer.AddListener(DestroyAllSpawnEmojiVictory);
     }
     private void Start()
     {
@@ -60,6 +61,14 @@ public class T6_EmojiControler : MonoBehaviour
     }
 
     public void DestroyAllSpawnEmoji(MilestoneTimerData data)
+    {
+        if(gameObject != null)
+        {
+            StartCoroutine(WaitBeforeDestroyAll());
+        }
+    }
+    
+    public void DestroyAllSpawnEmojiVictory(VictoryTimerData data)
     {
         if(gameObject != null)
         {
