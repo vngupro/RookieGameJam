@@ -732,6 +732,7 @@ MonoBehaviour:
   animator: {fileID: 7913385993955164149}
   grapin: {fileID: 4609618295485902775}
   endAnim: {fileID: 7913385993955164148}
+  rngFactor: 5
 --- !u!4 &231450625
 Transform:
   m_ObjectHideFlags: 0
@@ -6975,6 +6976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 510073826}
   score: 0
+  rngFactor: 5
 --- !u!1 &1101356766
 GameObject:
   m_ObjectHideFlags: 0
@@ -8221,6 +8223,10 @@ PrefabInstance:
       propertyPath: damageValue
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5757978530932342765, guid: 6cee2f8edea62674495e2b3a3c02e8fa, type: 3}
+      propertyPath: timeScreenFade
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5757978531440482512, guid: 6cee2f8edea62674495e2b3a3c02e8fa, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.2000122
@@ -8953,6 +8959,7 @@ MonoBehaviour:
   combo4: 4
   combo5: 5
   comboTextTime: 1.5
+  rngFactor: 5
 --- !u!1 &1877808094
 GameObject:
   m_ObjectHideFlags: 0

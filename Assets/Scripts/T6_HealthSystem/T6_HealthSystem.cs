@@ -30,6 +30,7 @@ public class T6_HealthSystem : MonoBehaviour
     [SerializeField] Image greenScreen;
     [SerializeField] float screenTransparency = 0.5f;
     [SerializeField] bool activeScreenAnim = true;
+    [SerializeField] float timeScreenFade = 10.0f;
     [Header("Debug")]
     [SerializeField] bool kill = false;
     T6_ProgresBar progressBar;
@@ -164,7 +165,7 @@ public class T6_HealthSystem : MonoBehaviour
     public void RedScreenFade()
     {
         var tempColor = redScreen.color;
-        tempColor.a -= screenTransparency / 60;
+        tempColor.a -= screenTransparency / timeScreenFade;
         redScreen.color = tempColor;
         if (tempColor.a == 0)
         {
@@ -175,7 +176,7 @@ public class T6_HealthSystem : MonoBehaviour
     public void GreenScreenFade()
     {
         var tempColor = greenScreen.color;
-        tempColor.a -= screenTransparency / 60;
+        tempColor.a -= screenTransparency / timeScreenFade;
         greenScreen.color = tempColor;
     }
     IEnumerator ShowBatterieValue(float value)
