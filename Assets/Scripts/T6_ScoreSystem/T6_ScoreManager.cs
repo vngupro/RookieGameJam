@@ -29,7 +29,7 @@ public class T6_ScoreManager : MonoBehaviour
     public void HitWeakEmoji(HitScoreEventData data)
     {
         score++;
-        text.text = score.ToString();
+        text.text = "Score: " + score.ToString();
 
         //Bonus Gacha
         if ( (score + 1) % rngFactor == 0)

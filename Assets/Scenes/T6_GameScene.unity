@@ -1725,7 +1725,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 'Score: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 768cada7d9319cc48935a03b3c32ffcc, type: 2}
   m_sharedMaterial: {fileID: -5167555580667177817, guid: 768cada7d9319cc48935a03b3c32ffcc, type: 2}
@@ -10410,11 +10410,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comboText: {fileID: 1049620516}
   comboCountText: {fileID: 164206213}
-  comboText1: Not Bad
-  comboText2: Good
-  comboText3: Great
-  comboText4: Awesome
-  comboText5: God
+  comboText1: Pas mal
+  comboText2: Bien
+  comboText3: Super
+  comboText4: Incroyable
+  comboText5: Legendaire
   combo1: 1
   combo2: 2
   combo3: 3

@@ -39,7 +39,7 @@ public class T6_ComboManager : MonoBehaviour
     public void ComboPlus(HitScoreEventData data)
     {
         comboCount++;
-        comboCountText.text = comboCount.ToString();
+        comboCountText.text = "Combo: " + comboCount.ToString();
 
         if(comboCount == combo1)
         {

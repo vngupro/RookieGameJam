@@ -12,7 +12,7 @@ public class T6_BatterieBonus : MonoBehaviour
     [SerializeField] float value3 = 50.0f;
     [SerializeField] float value4 = 100.0f;
 
-    [SerializeField] float batterieSpeed = 0.1f;
+    [SerializeField] float batterieSpeed = 0.25f;
 
     [SerializeField] private ParticleSystem particles;
     [SerializeField] private AudioSource audio;
