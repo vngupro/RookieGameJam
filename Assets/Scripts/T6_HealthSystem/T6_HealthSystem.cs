@@ -40,6 +40,8 @@ public class T6_HealthSystem : MonoBehaviour
     [Header("Sound Name")]
     [SerializeField]private string batterieUp;
     [SerializeField] T6_GameManager gameManager;
+
+    public AudioSource music;
     private void Awake()
     {
         progressBar = GetComponent<T6_ProgresBar>();
@@ -122,6 +124,7 @@ public class T6_HealthSystem : MonoBehaviour
     public void DeathTrigger()
     {
         gameOverScreen.SetActive(true);
+        music.Stop();
         gameManager.PauseGame();
 
     }

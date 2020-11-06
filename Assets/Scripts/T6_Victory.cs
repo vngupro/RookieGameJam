@@ -28,6 +28,8 @@ public class T6_Victory : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private bool victory = false;
 
+    public AudioSource music;
+
     private void Awake()
     {
         maxTime = timer;
@@ -79,6 +81,7 @@ public class T6_Victory : MonoBehaviour
         grabSmiley.enabled = false;
         animator.SetTrigger("Victory");
         grapin.SetActive(false);
+        music.Stop();
         StartCoroutine(DisplayVictoryScreen());
     }
 

@@ -31,7 +31,7 @@ public class T6_GameManager : MonoBehaviour
         }
     }
     #endregion
-    public void LoadScene(string sceneToLoad)
+    public void LoadScene(int sceneToLoad)
     {
         SceneManager.LoadScene(sceneToLoad);
     }
