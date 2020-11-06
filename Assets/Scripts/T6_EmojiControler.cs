@@ -93,6 +93,7 @@ public class T6_EmojiControler : MonoBehaviour
 
     IEnumerator WaitBeforeDestroyAll()
     {
+        Debug.Log("screen shake");
         T6_EmojiEvent.hitEmojiEvent.Invoke();
         yield return new WaitForSeconds(2.0f);
         

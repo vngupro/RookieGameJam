@@ -116,7 +116,7 @@ public class T6_HealthSystem : MonoBehaviour
         //Bonus Gacha
         if ( (damageCount + 1) % rngFactor == 0)
         {
-            Debug.Log((damageCount + 1) % rngFactor);
+            //Debug.Log((damageCount + 1) % rngFactor);
             T6_BonusEvent.damageCountChange.Invoke(new BonusEventData(damageCount));
         }
     }

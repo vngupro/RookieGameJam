@@ -39,16 +39,17 @@ public class T6_Victory : MonoBehaviour
 
     private void Update()
     {
-        if (victory)
+        /*if (victory)
         {
+            Debug.Log("invoke 1");
             Victory();
             T6_TimerEvent.victoryTimer.Invoke(new VictoryTimerData(timer));
 
-        }
+        }*/
         if (!gameIsOver)
             timer -= Time.deltaTime;
 
-        if (timer < timer - (timer - 2.5f))
+        if (timer < timer - (timer - 2.5f) && !gameIsOver)
         {
             emojiSpawner.enabled = false;
             T6_TimerEvent.victoryTimer.Invoke(new VictoryTimerData(timer));
