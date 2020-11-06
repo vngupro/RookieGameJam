@@ -1097,7 +1097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd79d22814b5f24ebfc2539b1617466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 10
+  timer: 120
   milestone: 3
   progressBar: {fileID: 1797609276}
   emojiSpawner: {fileID: 1127662163}
