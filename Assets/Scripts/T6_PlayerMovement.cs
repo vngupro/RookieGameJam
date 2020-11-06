@@ -11,6 +11,7 @@ public class T6_PlayerMovement : MonoBehaviour
     [SerializeField] float timeInput = 0.1f;
     [SerializeField] List<Transform> playerLineList = new List<Transform>();
     private int currentLine = 2;
+    private bool isMoving = false;
 
     private void Start()
     {
@@ -33,16 +34,21 @@ public class T6_PlayerMovement : MonoBehaviour
         //}
 
         timer -= Time.deltaTime;
-        if (inputVertical == 1 && timer < 0 && currentLine > 0)
+        if (inputVertical == 1 && timer < 0 && currentLine > 0 && !isMoving)
         {
+            isMoving = true;
             currentLine--;
             transform.position = playerLineList[currentLine].position;
             timer = timeInput;
-        }else if (inputVertical == -1 && timer < 0 && currentLine < playerLineList.Count - 1)
+        }else if (inputVertical == -1 && timer < 0 && currentLine < playerLineList.Count - 1 && !isMoving)
         {
+            isMoving = true;
             currentLine++;
             transform.position = playerLineList[currentLine].position;
             timer = timeInput;
+        }else if (inputVertical == 0)
+        {
+            isMoving = false;
         }
     }
 }
