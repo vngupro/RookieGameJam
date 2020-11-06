@@ -149,7 +149,7 @@ MonoBehaviour:
   value2: 12
   value3: 15
   value4: 18
-  batterieSpeed: 0.15
+  batterieSpeed: 0.05
   particles: {fileID: 0}
   audio: {fileID: -8020006972367606323}
 --- !u!82 &-8020006972367606323
