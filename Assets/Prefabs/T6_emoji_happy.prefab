@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4a9c11477d34246ace427a4e7b3be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles: {fileID: 1345211996041395707, guid: 0f125de6008a08a46b94f6d4f8fee33b, type: 3}
+  particles: {fileID: 8807933133774824076, guid: 64e3390e85f4cc0478e306df1e907bcc, type: 3}
   emojiSpawner: {fileID: 5955099657712493365, guid: 7ab6b5906f9be1247affd286025c37a8, type: 3}
   randomSpeed: 0
   destroyEmoji: Explosion
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emojiType: 0
   isBeingShot: 0
-  particles: {fileID: 8807933133774824076, guid: c9e6e5fa51adde243a8b52f1b149387b, type: 3}
+  particles: {fileID: 8807933133774824076, guid: 64e3390e85f4cc0478e306df1e907bcc, type: 3}
   point: 1
   strength: 
 --- !u!58 &138282036220347332

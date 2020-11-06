@@ -22,9 +22,12 @@ public class T6_EmojiInteractions : MonoBehaviour
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             if ( isBeingShot && collision.gameObject.GetComponent<T6_EmojiInteractions>().emojiType == strength[0])
             {
-                Destroy(collision.gameObject);
+                Destroy(collision.gameObject, .5f);
                 Destroy(this.gameObject, .5f);
                 SpawnParticles();
+                collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                Instantiate(collision.gameObject.GetComponent<T6_EmojiInteractions>().particles, this.gameObject.transform);
+                collision.gameObject.GetComponent<Collider2D>().enabled = false;
                 T6_ScoreEvent.hitWeakEmoji.Invoke(new HitScoreEventData(collision.gameObject, gameObject, point));
                 T6_EmojiEvent.hitEmojiEvent.Invoke();
             }/*
@@ -42,7 +45,6 @@ public class T6_EmojiInteractions : MonoBehaviour
     {
         this.GetComponent<SpriteRenderer>().enabled = false;
         Instantiate(particles, this.gameObject.transform);
-        //this.GetComponent<T6_EmojiControler>().speed = 0;
         this.GetComponent<Collider2D>().enabled = false;
     }
 
