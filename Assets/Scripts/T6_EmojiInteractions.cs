@@ -16,24 +16,26 @@ public class T6_EmojiInteractions : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("T6_Emoji") && isBeingShot)
+        if (collision.gameObject.CompareTag("T6_Emoji"))
         {
-
-            if (collision.gameObject.GetComponent<T6_EmojiInteractions>().emojiType == strength[0] /*|| collision.gameObject.GetComponent<T6_EmojiInteractions>().emojiType == strength[1]*/)
-            { 
+            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            if ( isBeingShot && collision.gameObject.GetComponent<T6_EmojiInteractions>().emojiType == strength[0])
+            {
                 Destroy(collision.gameObject);
                 Destroy(this.gameObject, .5f);
                 SpawnParticles();
                 T6_ScoreEvent.hitWeakEmoji.Invoke(new HitScoreEventData(collision.gameObject, gameObject, point));
                 T6_EmojiEvent.hitEmojiEvent.Invoke();
-            }
+            }/*
             else
             {
                 this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-            }
+            }*/
             isBeingShot = false;
         }
+
     }
 
     private void SpawnParticles()
